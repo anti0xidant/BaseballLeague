@@ -1,4 +1,4 @@
-﻿var playeruri = "/api/PlayerAPI"
+﻿var playeruri = "/api/PlayerAPI";
 
 $(document).ready(function () {
     loadPlayers();
