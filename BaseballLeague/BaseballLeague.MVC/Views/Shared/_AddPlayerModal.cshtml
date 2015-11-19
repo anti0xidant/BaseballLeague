@@ -1,4 +1,6 @@
-﻿<button class="btn btn-primary" id="btnShowAddPlayer">Add Player</button>
+﻿@model List<BaseballLeague.Models.Team>
+
+<button class="btn btn-primary" id="btnShowAddPlayer">Add Player</button>
 
 <!-- Modal -->
 <div class="modal fade" id="addPlayerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -27,8 +29,12 @@
                             <input type="text" id="addPlayerJerseyNumber" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label>Team Name</label>
-                            <input type="text" id="addPlayerTeam" class="form-control" />
+                            <select class="form-control col-lg-4" title="Select a Team" id="select">
+                                @foreach (var l in Model)
+                                {
+                                    <option value=@l.TeamID>@l.TeamName</option>
+                                }
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Previous Year's Batting Average</label>

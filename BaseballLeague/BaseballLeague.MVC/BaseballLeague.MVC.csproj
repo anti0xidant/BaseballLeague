@@ -179,6 +179,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddPlayerModalVM.cs" />
     <Compile Include="Models\PlayersVM.cs" />
     <Compile Include="Models\RosterViewModel.cs" />
     <Compile Include="Models\TeamsViewModel.cs" />

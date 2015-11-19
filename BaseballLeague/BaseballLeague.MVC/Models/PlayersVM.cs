@@ -16,6 +16,7 @@ namespace BaseballLeague.MVC.Models
         public PlayersVM(List<Player> playersList, List<Team> teamsList)
         {
             Players = playersList;
+            TeamsDropdown = new List<SelectListItem>();
 
             foreach (var team in teamsList)
             {

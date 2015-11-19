@@ -16,7 +16,7 @@ function loadPlayers() {
 };
 
 function createTableDataPlayer(player) {
-    return '<td value="' + player.PlayerID + '"><td>' + player.FirstName + '</td><td>' + player.LastName + '</td><td>' + player.JerseyNumber + '</td><td>' + player.Team + '</td><td>' + player.LastYearBA + '</td><td>' + player.YearsPlayed + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td>';
+    return '<tr><td value="' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.Team + '</td><td>' + player.LastYearBA + '</td><td>' + player.YearsPlayed + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td></tr>';
 }
 
 $(document).ready(function () {

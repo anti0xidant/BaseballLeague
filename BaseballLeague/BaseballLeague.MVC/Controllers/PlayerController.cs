@@ -15,11 +15,19 @@ namespace BaseballLeague.MVC.Controllers
         {
             var ops = new BaseballBLL();
             var players = ops.GetNonFreeAgentPlayers();
-            var teams = ops.GetTeams();
+            var teams = ops.GetTeamDropDown();
             
             var vm = new PlayersVM(players, teams);
             
             return View(vm);
+        }
+
+        public ActionResult _AddPlayerModal()
+        {
+            var ops = new BaseballBLL();
+            var teams = ops.GetTeamDropDown();
+
+            return PartialView(teams);
         }
     }
 }
