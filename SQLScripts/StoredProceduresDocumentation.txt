@@ -10,6 +10,7 @@ Read  :   4
 Update:   2
 Delete:   1
 Dropdown: 3
+TOTAL: 12
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Create
@@ -70,6 +71,14 @@ DeletePlayer
 DropDown
 
 LeagueDropDown
+	 LeagueID		(int)
+	 LeagueName		(string)
+	
 PositionDropDown
+	 PositionID		(int)
+	 PositionName		(string)
+
 TeamDropDown
+	 TeamID			(int)
+	 TeamName 		(string)
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
