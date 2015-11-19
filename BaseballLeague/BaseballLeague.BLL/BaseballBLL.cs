@@ -11,6 +11,24 @@ namespace BaseballLeague.BLL
 {
     public class BaseballBLL
     {
+        #region Create Methods
+
+        // Add player to database. Player object is assigned a PlayerID
+        public void AddPlayer(Player player)
+        {
+            var create = new Create();
+
+            create.AddPlayer(player);
+        }
+
+        // Add new team to database. Team object receieves a TeamID
+        public void AddTeam(Team team)
+        {
+            var create = new Create();
+            create.AddTeam(team);
+        }
+        #endregion
+
         #region Read Methods
         // Retrieves a list of all players that DO NOT belong to a team
         public List<Player> GetFreeAgents()
@@ -45,32 +63,24 @@ namespace BaseballLeague.BLL
         }
         #endregion
 
-        #region Create Methods
+        #region Update Methods
 
-        // Add player to database. Player object is assigned a PlayerID
-        public void AddPlayer(Player player)
+        public void ReleasePlayer(int PlayerID)
         {
-            var create = new Create();
+            var update = new Update();
 
-            create.AddPlayer(player);
-        }
-
-        // Add new team to database. Team object receieves a TeamID
-        public void AddTeam(Team team)
-        {
-            var create = new Create();
-            create.AddTeam(team);
+            update.ReleasePlayer(PlayerID);
         }
         #endregion
 
         #region Delete Methods
         #endregion
 
-        #region Update Methods
-        #endregion
+
 
         #region Dropdown Methods
 
+        // Retrieves TeamID and TeamName for dropdown list
         public List<Team> GetTeamDropDown()
         {
             var dropDown = new Dropdown();
@@ -78,6 +88,7 @@ namespace BaseballLeague.BLL
             return dropDown.GetTeamDropDown();
         }
 
+        // Retrieves PositionID and PositionName for dropdown list
         public List<Position> GetPositionDropDown()
         {
             var dropDown = new Dropdown();
@@ -85,6 +96,7 @@ namespace BaseballLeague.BLL
             return dropDown.GetPositionDropDown();
         }
 
+        // Retrieves LeagueID and LeagueName fro dropdown list
         public List<League> GetLeagueDropDown()
         {
             var dropDown = new Dropdown();

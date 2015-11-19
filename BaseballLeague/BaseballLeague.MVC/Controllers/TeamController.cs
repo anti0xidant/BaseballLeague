@@ -21,5 +21,14 @@ namespace BaseballLeague.MVC.Controllers
            
             return View(teamVM);
         }
+
+        public ActionResult PlayersOnTeam(int TeamID = 2)
+        {
+            var ops = new BaseballBLL();
+            var players = ops.GetTeamRoster(TeamID);
+            var RosterVM = new RosterViewModel(players);
+
+            return View(RosterVM);
+        }
     }
 }

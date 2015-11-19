@@ -13,31 +13,29 @@ namespace BaseballLeague.MVC.Controllers
     {
         public List<Player> Get()
         {
-            var ops = new BaseballLeagueOperations();
-            var players = ops.GetAllPlayers();
+            var ops = new BaseballBLL();
 
-            return players;
+            return ops.GetNonFreeAgentPlayers();
         }
 
-        public List<Player> Get(int id)
+        public List<Player> Get(int teamId)
         {
-            var ops = new BaseballLeagueOperations();
-            var players = ops.GetPlayersByTeam(id);
+            var ops = new BaseballBLL();
 
-            return players;
-        }
+            return ops.GetTeamRoster(teamId);
+        } 
 
         public HttpResponseMessage Post(Player newPlayer)
         {
-            var ops = new BaseballLeagueOperations();
-            ops.AddPlayer();                                                 // TODO Add fields from model
+            var ops = new BaseballBLL();
+            ops.AddPlayer(newPlayer);
 
             var response = Request.CreateResponse(HttpStatusCode.Created, newPlayer);
 
-            string uri = Url.Link("DefaultApi", new { id = newPlayer.PlayerID });
+            string uri = Url.Link("DefaultApi", new {id = newPlayer.PlayerID});
             response.Headers.Location = new Uri(uri);
 
             return response;
-        } 
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace BaseballLeague.Data
 
                 try
                 {
-                    p.Add("@TeamID", TeamID);
+                    p.Add("TeamID", TeamID);
                     teamRoster = cn.Query<Player>("ViewRoster", p, commandType: CommandType.StoredProcedure).ToList();
                 }
                 finally
