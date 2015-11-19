@@ -1,0 +1,75 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Baseball League Stored Procedures
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Number of Procedures by Type
+
+Create:   2
+Read  :   4
+Update:   2
+Delete:   1
+Dropdown: 3
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Create
+
+AddPlayer
+	 FirstName		(string, 30 char)
+	 LastName 		(string, 30 char)
+	 JerseyNumber		(int)
+	 TeamID			(int)
+	 LastYearBA		(decimal)
+	 YearsPlayed		(int)
+	 PrimaryPositionID	(int)
+	 SecondaryPositionID	(int)
+	 PlayerID		(int, output)
+
+CreateTeam
+	 TeamName 		(string , 30 char)
+	 ManagerName 		(string, 30 char)
+	 LeagueID 		(int)
+	 TeamID 		(int, output)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Read
+
+DisplayFreeAgents
+	 PlayerID		(int)
+	 Name			(string)
+	 JerseyNumber		(int)
+	 LastYearBA		(decimal)
+	 PrimaryPosition	(string)
+	 SecondaryPosition	(string)
+
+ViewAllPlayers
+	 PlayerID		(int)
+	 Name			(string)
+	 JerseyNumber		(int)
+	 LastYearBA		(decimal)
+	 PrimaryPosition	(string)
+	 SecondaryPosition	(string)
+	 YearsPlayed		(int)
+	
+ViewRoster
+	 
+ViewTeams
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Update
+
+ReleasePlayer
+TradePlayer
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Delete
+
+DeletePlayer
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+DropDown
+
+LeagueDropDown
+PositionDropDown
+TeamDropDown
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

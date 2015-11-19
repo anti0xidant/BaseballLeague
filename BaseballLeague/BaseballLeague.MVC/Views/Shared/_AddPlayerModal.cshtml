@@ -1,0 +1,58 @@
+﻿<button class="btn btn-primary" id="btnShowAddPlayer">Add Player</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addPlayerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Add Player</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h2>Add Player</h2>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="addPlayerFirstName" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="addPlayerLastName" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Jersey Number</label>
+                            <input type="text" id="addPlayerJerseyNumber" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Team Name</label>
+                            <input type="text" id="addPlayerTeam" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Previous Year's Batting Average</label>
+                            <input type="text" id="addPlayerLastYearBA" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Years Played</label>
+                            <input type="text" id="addPlayerYearsPlayed" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Primary Position</label>
+                            <input type="text" id="addPlayerPrimaryPosition" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Secondary Position</label>
+                            <input type="text" id="addPlayerSecondaryPosition" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" id="btnSavePlayer">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
