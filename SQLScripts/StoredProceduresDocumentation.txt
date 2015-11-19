@@ -5,80 +5,130 @@ Baseball League Stored Procedures
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Number of Procedures by Type
 
-Create:   2
-Read  :   4
-Update:   2
-Delete:   1
-Dropdown: 3
-TOTAL: 12
+Create:     2
+Read  :     4
+Update:     2
+Delete:     1
+Dropdown:   3
+TOTAL: 	   12
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Create
 
 AddPlayer
-	 FirstName		(string, 30 char)
-	 LastName 		(string, 30 char)
-	 JerseyNumber		(int)
-	 TeamID			(int)
-	 LastYearBA		(decimal)
-	 YearsPlayed		(int)
-	 PrimaryPositionID	(int)
-	 SecondaryPositionID	(int)
-	 PlayerID		(int, output)
+
+	inputs:
+		 FirstName		(string, 30 char)
+		 LastName 		(string, 30 char)
+		 JerseyNumber		(int)
+		 TeamID			(int)
+		 LastYearBA		(decimal)
+		 YearsPlayed		(int)
+		 PrimaryPositionID	(int)
+		 SecondaryPositionID	(int)
+	output:
+		 PlayerID		(int, output)
 
 CreateTeam
-	 TeamName 		(string , 30 char)
-	 ManagerName 		(string, 30 char)
-	 LeagueID 		(int)
-	 TeamID 		(int, output)
+
+	inputs:
+		 TeamName 		(string, 30 char)
+		 ManagerName 		(string, 30 char)
+		 LeagueID 		(int)
+	output:
+		 TeamID 		(int, output)
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Read
 
 DisplayFreeAgents
-	 PlayerID		(int)
-	 Name			(string)
-	 JerseyNumber		(int)
-	 LastYearBA		(decimal)
-	 PrimaryPosition	(string)
-	 SecondaryPosition	(string)
+	 
+	outputs:
+		 PlayerID		(int)
+		 Name			(string)
+		 JerseyNumber		(int)
+		 LastYearBA		(decimal)
+		 PrimaryPosition	(string)
+		 SecondaryPosition	(string)
 
 ViewAllPlayers
-	 PlayerID		(int)
-	 Name			(string)
-	 JerseyNumber		(int)
-	 LastYearBA		(decimal)
-	 PrimaryPosition	(string)
-	 SecondaryPosition	(string)
-	 YearsPlayed		(int)
+
+	outputs:
+		 PlayerID		(int)
+		 Name			(string)
+		 JerseyNumber		(int)
+		 LastYearBA		(decimal)
+		 PrimaryPosition	(string)
+		 SecondaryPosition	(string)
+		 YearsPlayed		(int)
 	
 ViewRoster
 	 
+	 input:
+		 TeamID			(int)
+	 outputs:
+		 PlayerID		(int)
+		 Name			(string)
+		 JerseyNumber		(int)
+		 LastYearBA		(decimal)
+		 PrimaryPosition	(string)
+		 SecondaryPosition	(string)
+		 YearsPlayed		(int)
+
+		 
 ViewTeams
+
+	 outputs:
+		 TeamID			(int)
+		 TeamName		(string)
+		 ManagerName		(string)
+		 LeagueName		(string)
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Update
 
 ReleasePlayer
+
+	 input:
+		 PlayerID		(int)
+			 
 TradePlayer
+
+	 inputs:
+		 PlayerID 		(int)
+		 TeamID			(int)
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Delete
 
 DeletePlayer
+
+	 input:
+		 PlayerID		(int)
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 DropDown
 
 LeagueDropDown
-	 LeagueID		(int)
-	 LeagueName		(string)
-	
+
+	outputs:
+		 LeagueID		(int)
+		 LeagueName		(string)		 
+		 
 PositionDropDown
-	 PositionID		(int)
-	 PositionName		(string)
+
+	outputs:
+		 PositionID		(int)
+		 PositionName		(string)
 
 TeamDropDown
-	 TeamID			(int)
-	 TeamName 		(string)
+
+	outputs:
+		 TeamID			(int)
+		 TeamName		(string)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
