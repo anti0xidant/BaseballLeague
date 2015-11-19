@@ -70,6 +70,27 @@ namespace BaseballLeague.BLL
         #endregion
 
         #region Dropdown Methods
+
+        public List<Team> GetTeamDropDown()
+        {
+            var dropDown = new Dropdown();
+
+            return dropDown.GetTeamDropDown();
+        }
+
+        public List<Position> GetPositionDropDown()
+        {
+            var dropDown = new Dropdown();
+
+            return dropDown.GetPositionDropDown();
+        }
+
+        public List<League> GetLeagueDropDown()
+        {
+            var dropDown = new Dropdown();
+
+            return dropDown.GetLeagueDropDown();
+        } 
         #endregion
 
     }
