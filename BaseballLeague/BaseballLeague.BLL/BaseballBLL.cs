@@ -65,6 +65,12 @@ namespace BaseballLeague.BLL
 
         #region Update Methods
 
+        public void ReleasePlayer(int PlayerID)
+        {
+            var update = new Update();
+
+            update.ReleasePlayer(PlayerID);
+        }
         #endregion
 
         #region Delete Methods
