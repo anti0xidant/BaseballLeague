@@ -11,6 +11,24 @@ namespace BaseballLeague.BLL
 {
     public class BaseballBLL
     {
+        #region Create Methods
+
+        // Add player to database. Player object is assigned a PlayerID
+        public void AddPlayer(Player player)
+        {
+            var create = new Create();
+
+            create.AddPlayer(player);
+        }
+
+        // Add new team to database. Team object receieves a TeamID
+        public void AddTeam(Team team)
+        {
+            var create = new Create();
+            create.AddTeam(team);
+        }
+        #endregion
+
         #region Read Methods
         // Retrieves a list of all players that DO NOT belong to a team
         public List<Player> GetFreeAgents()
@@ -45,29 +63,14 @@ namespace BaseballLeague.BLL
         }
         #endregion
 
-        #region Create Methods
+        #region Update Methods
 
-        // Add player to database. Player object is assigned a PlayerID
-        public void AddPlayer(Player player)
-        {
-            var create = new Create();
-
-            create.AddPlayer(player);
-        }
-
-        // Add new team to database. Team object receieves a TeamID
-        public void AddTeam(Team team)
-        {
-            var create = new Create();
-            create.AddTeam(team);
-        }
         #endregion
 
         #region Delete Methods
         #endregion
 
-        #region Update Methods
-        #endregion
+
 
         #region Dropdown Methods
 
