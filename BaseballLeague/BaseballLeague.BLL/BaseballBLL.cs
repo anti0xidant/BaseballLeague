@@ -71,6 +71,7 @@ namespace BaseballLeague.BLL
 
         #region Dropdown Methods
 
+        // Retrieves TeamID and TeamName for dropdown list
         public List<Team> GetTeamDropDown()
         {
             var dropDown = new Dropdown();
@@ -78,6 +79,7 @@ namespace BaseballLeague.BLL
             return dropDown.GetTeamDropDown();
         }
 
+        // Retrieves PositionID and PositionName for dropdown list
         public List<Position> GetPositionDropDown()
         {
             var dropDown = new Dropdown();
@@ -85,6 +87,7 @@ namespace BaseballLeague.BLL
             return dropDown.GetPositionDropDown();
         }
 
+        // Retrieves LeagueID and LeagueName fro dropdown list
         public List<League> GetLeagueDropDown()
         {
             var dropDown = new Dropdown();
