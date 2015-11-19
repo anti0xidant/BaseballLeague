@@ -1,4 +1,5 @@
-﻿
+﻿@model BaseballLeague.MVC.Models.PlayersVM
+
 @{
     ViewBag.Title = "Players";
 }
@@ -20,14 +21,30 @@
     </thead>
     <tbody class="searchable">
     <tr>
-
+        @foreach (var p in Model.Players)
+        {
+            <td>@p.FirstName</td>
+            <td>@p.LastName</td>
+            <td>@p.JerseyNumber</td>
+            <td>@p.TeamID</td>
+            <td>@p.LastYearBA</td>
+            <td>@p.PrimaryPosition</td>
+            <td>@p.SecondaryPosition</td>
+        }
     </tr>
     </tbody>
 </table>
 
-<div class="form-group">
+@*<div class="form-group">
     <div class="col-lg-2 col-lg-offset-2">
         @Html.Partial("_AddPlayerModal")
+    </div>
+</div>*@
+
+<div class="form-group">
+    <label for="inputMPAARating" class="col-lg-2 control-label">MPAA Rating</label>
+    <div class="col-lg-6">
+        @Html.DropDownList("Teams", Model[0], "(select)", new { @class = "form-control input-sm", @id = "inputMPAARating", @name = "MPAARatings" })
     </div>
 </div>
 
