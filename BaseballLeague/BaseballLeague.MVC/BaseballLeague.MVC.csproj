@@ -175,6 +175,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerAPIController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Controllers\TeamAPIController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,6 +188,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\addPlayer.js" />
+    <Content Include="Scripts\app\addTeam.js" />
     <Content Include="Scripts\app\SearchBar.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -208,6 +210,7 @@
     <Content Include="Views\Shared\_AddPlayerModal.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Team\PlayersOnTeam.cshtml" />
+    <Content Include="Views\Shared\_AddTeamModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

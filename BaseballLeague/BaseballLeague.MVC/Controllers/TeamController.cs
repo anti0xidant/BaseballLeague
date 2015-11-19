@@ -22,13 +22,21 @@ namespace BaseballLeague.MVC.Controllers
             return View(teamVM);
         }
 
-        public ActionResult PlayersOnTeam(int TeamID = 2)
+        public ActionResult PlayersOnTeam(int TeamID)
         {
             var ops = new BaseballBLL();
             var players = ops.GetTeamRoster(TeamID);
             var RosterVM = new RosterViewModel(players);
 
             return View(RosterVM);
+        }
+
+        public ActionResult _AddTeamModal()
+        {
+            var ops = new BaseballBLL();
+            var leagues = ops.GetLeagueDropDown();
+
+            return PartialView(leagues);
         }
     }
 }
