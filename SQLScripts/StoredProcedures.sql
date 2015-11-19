@@ -227,6 +227,8 @@ SELECT
 FROM Teams t
 LEFT JOIN Leagues l ON t.LeagueID = l.LeagueID
 
+WHERE TeamID != 1
+
 END
 GO
 

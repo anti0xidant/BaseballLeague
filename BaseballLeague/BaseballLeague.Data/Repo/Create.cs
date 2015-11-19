@@ -22,15 +22,15 @@ namespace BaseballLeague.Data
 
                 try
                 {
-                    p.Add("@FirstName", player.FirstName);
-                    p.Add("@LastName", player.LastName);
-                    p.Add("@JerseyNumber", player.JerseyNumber);
+                    p.Add("FirstName", player.FirstName);
+                    p.Add("LastName", player.LastName);
+                    p.Add("JerseyNumber", player.JerseyNumber);
                     p.Add("TeamID", player.TeamID);
-                    p.Add("@LastYearBA", player.LastYearBA);
-                    p.Add("@YearsPlayed", player.YearsPlayed);
-                    p.Add("@PrimaryPositionID", player.PrimaryPositionID);
+                    p.Add("LastYearBA", player.LastYearBA);
+                    p.Add("YearsPlayed", player.YearsPlayed);
+                    p.Add("PrimaryPositionID", player.PrimaryPositionID);
                     p.Add("SecondaryPositionID", player.SecondaryPositionID);
-                    p.Add("@PlayerID", DbType.Int32, direction: ParameterDirection.Output);
+                    p.Add("PlayerID", DbType.Int32, direction: ParameterDirection.Output);
 
                     cn.Execute("AddPlayer", p, commandType: CommandType.StoredProcedure);
 
@@ -53,10 +53,10 @@ namespace BaseballLeague.Data
 
                 try
                 {
-                    p.Add("@TeamName", team.TeamName);
-                    p.Add("@ManagerName", team.ManagerName);
-                    p.Add("@LeagueID", team.LeagueID);
-                    p.Add("@TeamID", DbType.Int32, direction: ParameterDirection.Output);
+                    p.Add("TeamName", team.TeamName);
+                    p.Add("ManagerName", team.ManagerName);
+                    p.Add("LeagueID", team.LeagueID);
+                    p.Add("TeamID", DbType.Int32, direction: ParameterDirection.Output);
 
                     cn.Execute("CreateTeam", p, commandType: CommandType.StoredProcedure);
 

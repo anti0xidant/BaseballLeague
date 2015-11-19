@@ -4,12 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Teams</h2>
 
-<h3>View Collection<input type="text" class="input-sm col-lg-offset-8" placeholder="Team Name" name="search-nodata" id="search-nodata" data-list=".searchable" autocomplete="on"></h3>
-
-
-
+<h3>Teams</h3>
+<br/>
+<div>
+    <button class="btn btn-primary" id="NewTeam">New Team</button>
+</div>
+<div>
+    <select class="form-control col-lg-offset-9 col-lg-4" id="select">
+        <option value="All">All</option>
+        @foreach (var l in Model.Leagues)
+        {
+            <option value=@l.Value>@l.Text</option>
+        }
+    </select>
+</div>
 <table class="table table-striped table-hover">
     <thead>
     <tr>
@@ -20,21 +29,21 @@
         <th>Roster</th>
     </tr>
     </thead>
+    <tbody class="searchable">
     @if (Model.Teams.Any())
     {
-        <tbody class="searchable">
-        @foreach (var m in Model.Teams)
-        {
-            <tr>
-                <td>@(Model.Teams.IndexOf(m) + 1)</td>
-                <td>@m.TeamName</td>
-                <td>@m.ManagerName</td>
-                <td>@m.LeagueName</td>
-                <td><a href="/Team/ViewRoster?TeamID=@m.TeamID">View Roster</a></td>
-            </tr>
-        }
-        </tbody>
+        foreach (var m in Model.Teams)
+         {
+             <tr>
+                 <td>@(Model.Teams.IndexOf(m) + 1)</td>
+                 <td>@m.TeamName</td>
+                 <td>@m.ManagerName</td>
+                 <td>@m.LeagueName</td>
+                 <td><a href="/Team/ViewRoster?TeamID=@m.TeamID">View Roster</a></td>
+             </tr>
+         }
     }
+    </tbody>
 </table>
 
 @section Scripts{

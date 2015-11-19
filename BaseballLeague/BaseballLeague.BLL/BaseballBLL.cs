@@ -11,7 +11,26 @@ namespace BaseballLeague.BLL
 {
     public class BaseballBLL
     {
+        #region Create Methods
+
+        // Add player to database. Player object is assigned a PlayerID
+        public void AddPlayer(Player player)
+        {
+            var create = new Create();
+
+            create.AddPlayer(player);
+        }
+
+        // Add new team to database. Team object receieves a TeamID
+        public void AddTeam(Team team)
+        {
+            var create = new Create();
+            create.AddTeam(team);
+        }
+        #endregion
+
         #region Read Methods
+
         // Retrieves a list of all players that DO NOT belong to a team
         public List<Player> GetFreeAgents()
         {
@@ -43,30 +62,39 @@ namespace BaseballLeague.BLL
 
             return read.GetTeams();
         }
-        #endregion
 
-        #region Create Methods
-
-        // Add player to database. Player object is assigned a PlayerID
-        public void AddPlayer(Player player)
-        {
-            var create = new Create();
-
-            create.AddPlayer(player);
-        }
-
-        // Add new team to database. Team object receieves a TeamID
-        public void AddTeam(Team team)
-        {
-            var create = new Create();
-            create.AddTeam(team);
-        }
-        #endregion
-
-        #region Delete Methods
         #endregion
 
         #region Update Methods
+
+        // Releases player by changing TeamID to 1 for 'Free Agent'
+        public void ReleasePlayer(int PlayerID)
+        {
+            var update = new Update();
+
+            update.ReleasePlayer(PlayerID);
+        }
+
+        // Swaps player's team by changing TeamID
+        public void TradePlayer(int PlayerID, int TeamID)
+        {
+            var update = new Update();
+
+            update.TradePlayer(PlayerID, TeamID);
+        }
+
+        #endregion
+
+        #region Delete Methods
+
+        // Hard deletes a player from Player Table
+        public void DeletePlayer(int PlayerID)
+        {
+            var delete = new Delete();
+
+            delete.DeletePlayer(PlayerID);
+        }
+
         #endregion
 
         #region Dropdown Methods
@@ -94,6 +122,7 @@ namespace BaseballLeague.BLL
 
             return dropDown.GetLeagueDropDown();
         } 
+
         #endregion
 
     }

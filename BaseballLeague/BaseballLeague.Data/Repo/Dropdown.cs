@@ -13,6 +13,8 @@ namespace BaseballLeague.Data
 {
     public class Dropdown
     {
+
+        // Retrieves TeamID and TeamName for dropdown list
         public List<Team> GetTeamDropDown()
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
@@ -32,6 +34,7 @@ namespace BaseballLeague.Data
             }
         }
 
+        // Retrieves PositionID and PositionName for dropdown list
         public List<Position> GetPositionDropDown()
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
@@ -51,6 +54,7 @@ namespace BaseballLeague.Data
             }
         }
 
+        // Retrieves LeagueID and LeagueName fro dropdown list
         public List<League> GetLeagueDropDown()
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
