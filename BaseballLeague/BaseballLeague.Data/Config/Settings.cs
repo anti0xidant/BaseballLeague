@@ -17,7 +17,7 @@ namespace BaseballLeague.Data.Config
             {
                 if (string.IsNullOrEmpty(_connectionString))
                 {
-                    _connectionString = WebConfigurationManager.ConnectionStrings["DVDCollection"].ConnectionString;
+                    _connectionString = WebConfigurationManager.ConnectionStrings["BaseballLeagueCollection"].ConnectionString;
                 }
 
                 return _connectionString;
