@@ -30,6 +30,7 @@ namespace BaseballLeague.BLL
         #endregion
 
         #region Read Methods
+
         // Retrieves a list of all players that DO NOT belong to a team
         public List<Player> GetFreeAgents()
         {
@@ -61,22 +62,40 @@ namespace BaseballLeague.BLL
 
             return read.GetTeams();
         }
+
         #endregion
 
         #region Update Methods
 
+        // Releases player by changing TeamID to 1 for 'Free Agent'
         public void ReleasePlayer(int PlayerID)
         {
             var update = new Update();
 
             update.ReleasePlayer(PlayerID);
         }
+
+        // Swaps player's team by changing TeamID
+        public void TradePlayer(int PlayerID, int TeamID)
+        {
+            var update = new Update();
+
+            update.TradePlayer(PlayerID, TeamID);
+        }
+
         #endregion
 
         #region Delete Methods
+
+        // Hard deletes a player from Player Table
+        public void DeletePlayer(int PlayerID)
+        {
+            var delete = new Delete();
+
+            delete.DeletePlayer(PlayerID);
+        }
+
         #endregion
-
-
 
         #region Dropdown Methods
 
@@ -103,6 +122,7 @@ namespace BaseballLeague.BLL
 
             return dropDown.GetLeagueDropDown();
         } 
+
         #endregion
 
     }
