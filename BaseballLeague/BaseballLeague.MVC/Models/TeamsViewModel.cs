@@ -15,7 +15,9 @@ namespace BaseballLeague.MVC.Models
 
         public TeamsViewModel(List<Team> teamsList, List<League> leagueList)
         {
+
             Teams = teamsList;
+            Leagues = new List<SelectListItem>();
 
             foreach (var league in leagueList)
             {
