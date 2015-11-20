@@ -1,4 +1,4 @@
-@model List<BaseballLeague.Models.Team>
+@model BaseballLeague.MVC.Models.AddPlayerModalVM
 
 <button class="btn btn-primary" id="btnShowAddPlayer">Add Player</button>
 
@@ -29,10 +29,11 @@
                             <input type="text" id="addPlayerJerseyNumber" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <select class="form-control col-lg-4" title="Select a Team" id="select">
-                                @foreach (var l in Model)
+                            <label>Team</label>
+                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerTeam">
+                                @foreach (var tdd in Model.Teams)
                                 {
-                                    <option value=@l.TeamID>@l.TeamName</option>
+                                    <option value=@tdd.Value>@tdd.Text</option>
                                 }
                             </select>
                         </div>
@@ -46,11 +47,22 @@
                         </div>
                         <div class="form-group">
                             <label>Primary Position</label>
-                            <input type="text" id="addPlayerPrimaryPosition" class="form-control"/>
+                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerPrimaryPositionID">
+                                @foreach (var ppdd in Model.PrimaryPositions)
+                                {
+                                    <option value=@ppdd.Value>@ppdd.Text</option>
+                                }
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Secondary Position</label>
-                            <input type="text" id="addPlayerSecondaryPosition" class="form-control" />
+                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerSecondaryPositionID">
+                                <option>None</option>
+                                @foreach (var spdd in Model.SecondaryPositions)
+                                {
+                                    <option value=@spdd.Value>@spdd.Text</option>
+                                }
+                            </select>
                         </div>
                     </div>
                 </div>

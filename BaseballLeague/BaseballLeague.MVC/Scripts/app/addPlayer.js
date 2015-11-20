@@ -7,7 +7,7 @@ $(document).ready(function () {
 function loadPlayers() {
     $.getJSON(playeruri)
         .done(function (data) {
-            $('#inputPlayers td').remove();
+            $('#inputPlayers tr').remove();
 
             $.each(data, function (index, player) {
                 $(createTableDataPlayer(player)).appendTo($('#inputPlayers'));
@@ -16,7 +16,10 @@ function loadPlayers() {
 };
 
 function createTableDataPlayer(player) {
-    return '<tr><td value="' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.Team + '</td><td>' + player.LastYearBA + '</td><td>' + player.YearsPlayed + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td></tr>';
+    if (player.SecondaryPosition == null) {
+        player.SecondaryPosition = "-";
+    };
+    return '<tr value="' + player.PLayerID + '"><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.TeamID + '</td><td>' + player.LastYearBA.toPrecision(3).toString().substring(1, 5) + '</td><td>' + player.YearsPlayed + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td></tr>';
 }
 
 $(document).ready(function () {
@@ -33,8 +36,8 @@ $(document).ready(function () {
         player.Team = $('#addPLayerTeam').val();
         player.LastYearBA = $('#addPlayerLastYearBA').val();
         player.YearsPlayed = $('#addPlayerYearsPlayed').val();
-        player.PrimaryPosition = $('#addPlayerPrimaryPosition').val();
-        player.SecondaryPosition = $('#addPlayerSecondaryPosition').val();
+        player.PrimaryPositionID = $('#addPlayerPrimaryPositionID').val();
+        player.SecondaryPositionID = $('#addPlayerSecondaryPositionID').val();
 
 
         $.post(playeruri, player)
