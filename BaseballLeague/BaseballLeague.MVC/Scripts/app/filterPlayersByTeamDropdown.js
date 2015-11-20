@@ -5,6 +5,6 @@
 function filterByTeam() {
     $('#team-select').bind("change", function() {
         $("." + this.value).show();
-        $("tr:not(." + this.value + ")").hide();
+        $("tbody tr:not(." + this.value + ")").hide();
     });
 };

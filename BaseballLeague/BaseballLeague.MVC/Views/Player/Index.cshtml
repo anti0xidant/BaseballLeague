@@ -14,7 +14,7 @@
 
 <div>
     <select class="form-control col-lg-offset-9 col-lg-4" title="Select a Team" id="team-select">
-        <option value="All">All</option>
+        @*<option value="All">All</option>*@
         @foreach (var l in Model.TeamsDropdown)
         {
             <option value=@l.Value>@l.Text</option>
@@ -42,4 +42,5 @@
 @section Scripts
 {
     <script src="~/Scripts/app/addPlayer.js"></script>
+    <script src="~/Scripts/app/filterPlayersByTeamDropdown.js"></script>
 }

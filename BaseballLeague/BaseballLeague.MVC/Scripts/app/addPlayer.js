@@ -19,7 +19,7 @@ function createTableDataPlayer(player) {
     if (player.SecondaryPosition == null) {
         player.SecondaryPosition = "-";
     };
-    return '<tr value="' + player.PLayerID + '"><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.TeamID + '</td><td>' + player.LastYearBA.toPrecision(3).toString().substring(1, 5) + '</td><td>' + player.YearsPlayed + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td></tr>';
+    return '<tr value="' + player.PLayerID + '" class="' + player.TeamID + '"><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.TeamName + '</td><td>' + player.LastYearBA.toPrecision(3).toString().substring(1, 5) + '</td><td>' + player.YearsPlayed + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td></tr>';
 }
 
 $(document).ready(function () {
