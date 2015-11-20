@@ -22,11 +22,11 @@ namespace BaseballLeague.MVC.Controllers
             return View(teamVM);
         }
 
-        public ActionResult PlayersOnTeam(int TeamID)
+        public ActionResult PlayersOnTeam(int TeamID, string TeamName)
         {
             var ops = new BaseballBLL();
             var players = ops.GetTeamRoster(TeamID);
-            var RosterVM = new RosterViewModel(players);
+            var RosterVM = new RosterViewModel(TeamID, TeamName, players);
 
             return View(RosterVM);
         }
@@ -38,5 +38,35 @@ namespace BaseballLeague.MVC.Controllers
 
             return PartialView(leagues);
         }
+
+
+        public ActionResult _SignFreeAgentModal(int TeamID, string TeamName)
+        {
+            var ops = new BaseballBLL();
+            var freeAgents = ops.GetFreeAgents();
+
+            var FreeAgentVM = new SignFreeAgentViewModel(TeamID, TeamName, freeAgents);
+
+            return PartialView(FreeAgentVM);
+        }
+
+        public ActionResult _TradePlayerModal()
+        {
+            var ops = new BaseballBLL();
+            var teams= ops.GetTeams();
+
+            var tradePlayerVM = new TradePlayerViewModel(teams);
+
+            return PartialView(tradePlayerVM);
+        }
+
+        public ActionResult SignPlayer(int TeamID, int PlayerID, string TeamName)
+        {
+            var ops = new BaseballBLL();
+            ops.TradePlayer(PlayerID, TeamID);
+
+            return RedirectToAction("PlayersOnTeam", new {TeamID = TeamID, TeamName = TeamName});
+        }
+
     }
 }

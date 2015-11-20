@@ -3,33 +3,43 @@
     ViewBag.Title = "PlayersOnTeam";
 }
 
-<h2>Team Roster</h2>
+<h2>@Model.TeamName's Roster</h2>
 
 <div class="container">
     <table class="table">
         <thead>
-            <tr>
-                <th>Name</th>
-                <th>Jersey Number</th>
-                <th>Last Year's Batting Avg.</th>
-                <th>Main Position</th>
-                <th>Secondary Position</th>
-                <th>Years Played</th>
-            </tr>
+        <tr>
+            <th>Name</th>
+            <th>Jersey Number</th>
+            <th>Last Year's Batting Avg.</th>
+            <th>Main Position</th>
+            <th>Secondary Position</th>
+            <th>Years Played</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var p in Model.Players)
-            {
-                <tr>
-                    @*<td>@(String.Format("{0} {1}", p.FirstName, p.LastName))</td>*@
-                    <td>@p.Name</td>
-                    <td>@p.JerseyNumber</td>
-                    <td>@p.LastYearBA</td>
-                    <td>@p.PrimaryPosition</td>
-                    <td>@p.SecondaryPosition</td>
-                    <td>@p.YearsPlayed</td>
-                </tr>
-            }
+        @foreach (var p in Model.Players)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.JerseyNumber</td>
+                <td>@p.LastYearBA</td>
+                <td>@p.PrimaryPosition</td>
+                <td>@p.SecondaryPosition</td>
+                <td>@p.YearsPlayed</td>
+                <td><button class="btn btn-primary btn-xs btnTradePlayer" value="@p.PlayerID">Trade</button></td>
+                <td><button class="btn btn-primary btn-xs btnReleasePlayer" value="@p.PlayerID">Release</button></td>
+            </tr>
+        }
         </tbody>
     </table>
 </div>
+
+@{ Html.RenderAction("_TradePlayerModal", "Team");}
+@Html.Partial("_ReleasePlayerModal");
+@{ Html.RenderAction("_SignFreeAgentModal", "Team", new {TeamID = @Model.TeamID, TeamName = @Model.TeamName});}
+
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/app/viewRoster.js"></script>
+}

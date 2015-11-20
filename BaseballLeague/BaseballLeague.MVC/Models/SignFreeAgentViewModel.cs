@@ -6,17 +6,18 @@ using BaseballLeague.Models;
 
 namespace BaseballLeague.MVC.Models
 {
-    public class RosterViewModel
+    public class SignFreeAgentViewModel
     {
         public int TeamID { get; set; }
         public string TeamName { get; set; }
-        public List<Player>Players { get; set; }
+        public List<Player> FreeAgents { get; set; }
 
-        public RosterViewModel(int teamID, string teamName, List<Player> playerList)
+        public SignFreeAgentViewModel(int teamID, string teamName, List<Player> freeAgents)
         {
             TeamID = teamID;
             TeamName = teamName;
-            Players = playerList;
+            FreeAgents = freeAgents;
         }
+
     }
 }

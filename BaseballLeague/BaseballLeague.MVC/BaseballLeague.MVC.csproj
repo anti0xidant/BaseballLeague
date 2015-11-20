@@ -177,13 +177,16 @@
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\TeamAPIController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\TradeAPIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AddPlayerModalVM.cs" />
     <Compile Include="Models\PlayersVM.cs" />
     <Compile Include="Models\RosterViewModel.cs" />
+    <Compile Include="Models\SignFreeAgentViewModel.cs" />
     <Compile Include="Models\TeamsViewModel.cs" />
+    <Compile Include="Models\TradePlayerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -191,7 +194,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\addPlayer.js" />
     <Content Include="Scripts\app\addTeam.js" />
-    <Content Include="Scripts\app\SearchBar.js" />
+    <Content Include="Scripts\app\viewRoster.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -213,6 +216,9 @@
     <Content Include="Web.config" />
     <Content Include="Views\Team\PlayersOnTeam.cshtml" />
     <Content Include="Views\Shared\_AddTeamModal.cshtml" />
+    <Content Include="Views\Shared\_SignFreeAgentModal.cshtml" />
+    <Content Include="Views\Shared\_TradePlayerModal.cshtml" />
+    <Content Include="Views\Shared\_ReleasePlayerModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

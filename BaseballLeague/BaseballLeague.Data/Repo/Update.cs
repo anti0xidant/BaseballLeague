@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BaseballLeague.Data.Config;
 using Dapper;
 
 namespace BaseballLeague.Data
@@ -14,7 +15,7 @@ namespace BaseballLeague.Data
         // Releases player by changing TeamID to 1 for 'Free Agent'
         public void ReleasePlayer(int PlayerID)
         {
-            using (SqlConnection cn = new SqlConnection())
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
                 var p = new DynamicParameters();
 
@@ -34,7 +35,7 @@ namespace BaseballLeague.Data
         // Swaps player's team by changing TeamID
         public void TradePlayer(int PlayerID, int TeamID)
         {
-            using (SqlConnection cn = new SqlConnection())
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
                 var p = new DynamicParameters();
 
