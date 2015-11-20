@@ -25,9 +25,9 @@ namespace BaseballLeague.MVC.Controllers
         public ActionResult _AddPlayerModal()
         {
             var ops = new BaseballBLL();
-            var teams = ops.GetTeamDropDown();
+            var vm = new AddPlayerModalVM(ops.GetTeamDropDown(), ops.GetPositionDropDown());
 
-            return PartialView(teams);
+            return PartialView(vm);
         }
     }
 }

@@ -62,6 +62,8 @@ ViewAllPlayers
 		 PrimaryPosition	(string)
 		 SecondaryPosition	(string)
 		 YearsPlayed		(int)
+		 TeamID			(int)
+		 TeamName		(string)		
 	
 ViewRoster
 	 

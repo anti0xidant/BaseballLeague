@@ -13,8 +13,8 @@
 </div>
 
 <div>
-    <select class="form-control col-lg-offset-9 col-lg-4" title="Select a Team" id="select">
-        <option value="All">All</option>
+    <select class="form-control col-lg-offset-9 col-lg-4" title="Select a Team" id="team-select">
+        @*<option value="All">All</option>*@
         @foreach (var l in Model.TeamsDropdown)
         {
             <option value=@l.Value>@l.Text</option>
@@ -28,28 +28,19 @@
         <th>Name</th>
         <th>Number</th>
         <th>Team</th>
-        <th>Previous Batting Average</th>
+        <th>Batting Average (last season)</th>
         <th>Years Played</th>
         <th>Primary Position</th>
         <th>Secondary Position</th>
     </tr>
     </thead>
-    <tbody class="searchable">
-        @foreach (var p in Model.Players)
-        {
-            <tr>
-            <td>@p.Name</td>
-            <td>@p.JerseyNumber</td>
-            <td>@p.TeamID</td>
-            <td>@p.LastYearBA</td>
-            <td>@p.YearsPlayed</td>
-            <td>@p.PrimaryPosition</td>
-            <td>@p.SecondaryPosition</td></tr>
-        }
+    <tbody class="searchable" id="inputPlayers">
+
     </tbody>
 </table>
 
 @section Scripts
 {
     <script src="~/Scripts/app/addPlayer.js"></script>
+    <script src="~/Scripts/app/filterPlayersByTeamDropdown.js"></script>
 }
