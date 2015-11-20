@@ -18,7 +18,7 @@ namespace BaseballLeague.MVC.Controllers
 
             var response = Request.CreateResponse(HttpStatusCode.Created, player);
 
-            string uri = Url.Link("DefaultApi", new { id = player.PlayerID });
+            string uri = Url.Link("DefaultApi", new { id = player.TeamID });
             response.Headers.Location = new Uri(uri);
 
             return response;

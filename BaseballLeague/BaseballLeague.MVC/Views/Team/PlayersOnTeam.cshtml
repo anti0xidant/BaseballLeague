@@ -5,10 +5,13 @@
 
 <h2>@Model.TeamName's Roster</h2>
 
+<button class="btn btn-primary col-lg-offset-10" id="btnShowSignFreeAgent">Sign Free Agent</button>
+
 <div class="container">
     <table class="table">
         <thead>
         <tr>
+            <th>#</th>
             <th>Name</th>
             <th>Jersey Number</th>
             <th>Last Year's Batting Avg.</th>
@@ -21,6 +24,7 @@
         @foreach (var p in Model.Players)
         {
             <tr>
+                <td>@(Model.Players.IndexOf(p) + 1)</td>
                 <td>@p.Name</td>
                 <td>@p.JerseyNumber</td>
                 <td>@p.LastYearBA</td>
