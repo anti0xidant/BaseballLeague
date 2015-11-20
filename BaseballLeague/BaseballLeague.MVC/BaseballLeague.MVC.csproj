@@ -195,6 +195,7 @@
     <Content Include="Scripts\app\addPlayer.js" />
     <Content Include="Scripts\app\addTeam.js" />
     <Content Include="Scripts\app\deletePlayer.js" />
+    <Content Include="Scripts\app\filterByLeague.js" />
     <Content Include="Scripts\app\viewRoster.js" />
     <Content Include="Scripts\app\filterPlayersByTeamDropdown.js" />
     <Content Include="Scripts\app\SearchBar.js" />
