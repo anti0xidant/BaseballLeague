@@ -194,6 +194,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\addPlayer.js" />
     <Content Include="Scripts\app\addTeam.js" />
+    <Content Include="Scripts\app\deletePlayer.js" />
     <Content Include="Scripts\app\viewRoster.js" />
     <Content Include="Scripts\app\filterPlayersByTeamDropdown.js" />
     <Content Include="Scripts\app\SearchBar.js" />
@@ -221,6 +222,7 @@
     <Content Include="Views\Shared\_SignFreeAgentModal.cshtml" />
     <Content Include="Views\Shared\_TradePlayerModal.cshtml" />
     <Content Include="Views\Shared\_ReleasePlayerModal.cshtml" />
+    <Content Include="Views\Shared\_DeletePlayerModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

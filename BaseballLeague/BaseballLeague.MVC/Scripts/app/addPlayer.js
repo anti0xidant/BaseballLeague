@@ -1,4 +1,5 @@
 ﻿var playeruri = "/api/PlayerAPI";
+var playerCount = 0;
 
 $(document).ready(function () {
     loadPlayers();
@@ -10,7 +11,8 @@ function loadPlayers() {
             $('#inputPlayers tr').remove();
 
             $.each(data, function (index, player) {
-                $(createTableDataPlayer(player)).appendTo($('#inputPlayers'));
+                playerCount++;
+                $(createTableDataPlayer(player, playerCount)).appendTo($('#inputPlayers'));
             });
         });
 };
@@ -19,7 +21,11 @@ function createTableDataPlayer(player) {
     if (player.SecondaryPosition == null) {
         player.SecondaryPosition = "-";
     };
-    return '<tr value="' + player.PLayerID + '" class="' + player.TeamID + '"><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.TeamName + '</td><td>' + player.LastYearBA.toPrecision(3).toString().substring(1, 5) + '</td><td>' + player.YearsPlayed + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td></tr>';
+    return '<tr value="' + player.PLayerID + '" class="' + player.TeamID + '"><td>' + playerCount + '</td><td>' + player.Name +
+        '</td><td>' + player.JerseyNumber + '</td><td>' + player.TeamName + '</td><td>' +
+        player.LastYearBA.toPrecision(3).toString().substring(1, 5) + '</td><td>' + player.YearsPlayed + '</td><td>' +
+        player.PrimaryPosition + '</td><td>' + player.SecondaryPosition +
+        '</td><td><button class="btn btn-xs btn-primary btnDeletePlayer">Delete</button></td></tr>';
 }
 
 $(document).ready(function () {
@@ -37,7 +43,11 @@ $(document).ready(function () {
         player.LastYearBA = $('#addPlayerLastYearBA').val();
         player.YearsPlayed = $('#addPlayerYearsPlayed').val();
         player.PrimaryPositionID = $('#addPlayerPrimaryPositionID').val();
-        player.SecondaryPositionID = $('#addPlayerSecondaryPositionID').val();
+        if ($('#addPlayerSecondaryPositionID').val() === "null") {
+            player.SecondaryPositionID = null;
+        } else {
+            player.SecondaryPositionID = $('#addPlayerSecondaryPositionID').val();
+        }
 
 
         $.post(playeruri, player)

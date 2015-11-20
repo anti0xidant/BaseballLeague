@@ -12,6 +12,8 @@
     </div>
 </div>
 
+@{Html.RenderAction("_DeletePLayerModal", "Player");}
+
 <div>
     <select class="form-control col-lg-offset-9 col-lg-4" title="Select a Team" id="team-select">
         <option value="All">All</option>
@@ -25,6 +27,7 @@
 <table class="table table-striped table-hover">
     <thead>
     <tr>
+        <th>#</th>
         <th>Name</th>
         <th>Number</th>
         <th>Team</th>
@@ -32,6 +35,7 @@
         <th>Years Played</th>
         <th>Primary Position</th>
         <th>Secondary Position</th>
+        <th></th>
     </tr>
     </thead>
     <tbody class="searchable" id="inputPlayers">
@@ -43,4 +47,5 @@
 {
     <script src="~/Scripts/app/addPlayer.js"></script>
     <script src="~/Scripts/app/filterPlayersByTeamDropdown.js"></script>
+    <script src="~/Scripts/app/deletePlayer.js"></script>
 }
