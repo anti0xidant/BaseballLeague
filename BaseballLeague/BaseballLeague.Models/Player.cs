@@ -14,6 +14,7 @@ namespace BaseballLeague.Models
         public string LastName { get; set; }
         public int JerseyNumber { get; set; }
         public int TeamID { get; set; }
+        public string TeamName { get; set; }
         public decimal LastYearBA { get; set; }
         public int YearsPlayed { get; set; }
         public int PrimaryPositionID { get; set; }
