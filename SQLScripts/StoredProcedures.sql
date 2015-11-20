@@ -172,11 +172,14 @@ SELECT
 	pl.LastYearBA, 
 	ps1.PositionName					AS PrimaryPosition, 
 	ps2.PositionName					AS SecondaryPosition, 
-	pl.YearsPlayed 
+	pl.YearsPlayed, 
+	pl.TeamID,
+	t.TeamName
 
 FROM Player pl
 LEFT JOIN Position ps1 ON pl.PrimaryPositionID = ps1.PositionID
 LEFT JOIN Position ps2 ON pl.SecondaryPositionID = ps2.PositionID
+LEFT JOIN Teams t ON pl.TeamID = t.TeamID
 
 WHERE pl.TeamID != 1
 
