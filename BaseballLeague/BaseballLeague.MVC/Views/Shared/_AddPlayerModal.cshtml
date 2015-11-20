@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label>Team</label>
-                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerTeam">
+                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerTeamID">
                                 @foreach (var tdd in Model.Teams)
                                 {
                                     <option value=@tdd.Value>@tdd.Text</option>
@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <label>Secondary Position</label>
                             <select class="form-control col-lg-4" title="Select a Team" id="addPlayerSecondaryPositionID">
-                                <option>None</option>
+                                <option value="null">None</option>
                                 @foreach (var spdd in Model.SecondaryPositions)
                                 {
                                     <option value=@spdd.Value>@spdd.Text</option>
