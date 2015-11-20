@@ -9,7 +9,7 @@
 <h3>Teams</h3>
 <br/>
 <div>
-    <select class="form-control col-lg-offset-9 col-lg-4" id="select">
+    <select class="form-control col-lg-offset-9 col-lg-4" id="selectLeague">
         <option value="All">All</option>
         @foreach (var l in Model.Leagues)
         {
@@ -32,7 +32,7 @@
     {
         foreach (var m in Model.Teams)
          {
-             <tr>
+             <tr class="@m.LeagueID">
                  <td>@(Model.Teams.IndexOf(m) + 1)</td>
                  <td>@m.TeamName</td>
                  <td>@m.ManagerName</td>
@@ -48,4 +48,5 @@
 
 @section Scripts{
     <script type="text/javascript" src="~/Scripts/app/addTeam.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/filterByLeague.js"></script>
 }

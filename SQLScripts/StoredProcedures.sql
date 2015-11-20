@@ -224,8 +224,9 @@ BEGIN
 SELECT 
 	t.TeamID, 
 	t.TeamName, 
-	t.ManagerName, 
-	l.LeagueName 
+	t.ManagerName,
+	l.LeagueID, 
+	l.LeagueName
 
 FROM Teams t
 LEFT JOIN Leagues l ON t.LeagueID = l.LeagueID
