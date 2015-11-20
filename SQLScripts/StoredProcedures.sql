@@ -41,7 +41,7 @@ CREATE PROCEDURE AddPlayer
 	@LastName				varchar(30),
 	@JerseyNumber			int,
 	@TeamID					int,
-	@LastYearBA				decimal,
+	@LastYearBA				dec(3,3),
 	@YearsPlayed			int,
 	@PrimaryPositionID		int,
 	@SecondaryPositionID	int,

@@ -33,7 +33,7 @@ $(document).ready(function () {
         player.FirstName = $('#addPlayerFirstName').val();
         player.LastName = $('#addPlayerLastName').val();
         player.JerseyNumber = $('#addPlayerJerseyNumber').val();
-        player.Team = $('#addPLayerTeam').val();
+        player.TeamID = $('#addPlayerTeamID').val();
         player.LastYearBA = $('#addPlayerLastYearBA').val();
         player.YearsPlayed = $('#addPlayerYearsPlayed').val();
         player.PrimaryPositionID = $('#addPlayerPrimaryPositionID').val();
