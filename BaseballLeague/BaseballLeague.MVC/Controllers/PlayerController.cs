@@ -29,5 +29,10 @@ namespace BaseballLeague.MVC.Controllers
 
             return PartialView(vm);
         }
+
+        public ActionResult _DeletePlayerModal()
+        {
+            return PartialView();
+        }
     }
 }

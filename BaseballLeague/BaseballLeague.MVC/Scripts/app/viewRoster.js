@@ -8,20 +8,20 @@ $(document).ready(function () {
     $('.btnTradePlayer').click(function () {
 
         $('#tradePlayerModal').modal('show');
-        $('#tradePlayedID').val($(this).val());
+        $('#tradePlayerID').val($(this).val());
     });
    
 
     $('#btnMakeTrade').click(function () {
         var playerTrade = {};
 
-        playerTrade.PlayerID = $('#tradePlayedID').val();
+        playerTrade.PlayerID = $('#tradePlayerID').val();
         playerTrade.TeamID = $('#tradeTeamID').val();
 
 
         $.post(uriTrade, playerTrade)
             .done(function () {
-                //loadPlayers();
+                //loadRoster(playerTrade.TeamID);
                 $('#tradePlayerModal').modal('hide');
             })
             .fail(function (jqXhr, status, err) {
@@ -41,6 +41,8 @@ $(document).ready(function () {
     });
 
 });
+
+
 
 
 
