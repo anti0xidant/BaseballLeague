@@ -21,5 +21,6 @@ namespace BaseballLeague.Models
         public int SecondaryPositionID { get; set; }
         public string PrimaryPosition { get; set; }
         public string SecondaryPosition { get; set; }
+        
     }
 }
