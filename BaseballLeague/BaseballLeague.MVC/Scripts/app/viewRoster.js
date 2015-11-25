@@ -11,10 +11,12 @@ $(document).ready(function () {
         playerTrade.PlayerID = $('#tradePlayerID').val();
         playerTrade.TeamID = $('#tradeTeamID').val();
 
+        
+
 
         $.post(uriTrade, playerTrade)
             .done(function () {
-                loadRoster(playerTrade.TeamID);
+                loadRoster($('#currentTeamIDModal').val());
                 $('#tradePlayerModal').modal('hide');
                 setupButtons();
             })
@@ -39,6 +41,7 @@ function setupButtons() {
 
         $('#tradePlayerModal').modal('show');
         $('#tradePlayerID').val($(this).val());
+        $('#currentTeamIDModal').val($('#currentTeamID').val());
         //var table = $("#table")[0];
         //var cell = table.rows[5].cells[1];
         //alert($(cell).text());
