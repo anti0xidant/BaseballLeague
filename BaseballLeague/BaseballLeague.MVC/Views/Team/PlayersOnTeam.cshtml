@@ -6,9 +6,9 @@
 <h2>@Model.TeamName's Roster</h2>
 
 <button class="btn btn-primary col-lg-offset-10" id="btnShowSignFreeAgent">Sign Free Agent</button>
-
+<input type="hidden" value=@Model.TeamID id="currentTeamID"/>
 <div class="container">
-    <table class="table">
+    <table class="table" id="table">
         <thead>
         <tr>
             <th>#</th>

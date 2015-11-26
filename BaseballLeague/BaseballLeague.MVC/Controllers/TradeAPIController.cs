@@ -11,6 +11,13 @@ namespace BaseballLeague.MVC.Controllers
 {
     public class TradeAPIController : ApiController
     {
+
+        public List<Player> Get(int TeamID)
+        {
+            var ops = new BaseballBLL();
+            return ops.GetTeamRoster(TeamID);
+        }
+
         public HttpResponseMessage Post(Player player)
         {
             var ops = new BaseballBLL();
