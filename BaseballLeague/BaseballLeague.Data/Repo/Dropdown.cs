@@ -25,6 +25,15 @@ namespace BaseballLeague.Data
                 {
                     teams = cn.Query<Team>("TeamDropDown", commandType: CommandType.StoredProcedure).ToList();
                 }
+                catch (Exception e)
+                {
+                    // Write failure to database
+                    var ep = new DynamicParameters();
+
+                    ep.Add("ExceptionType", e.GetType());
+                    ep.Add("ExceptionMessage", e.Message);
+                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                }
                 finally
                 {
                     cn.Close();
@@ -45,6 +54,15 @@ namespace BaseballLeague.Data
                 {
                     positions = cn.Query<Position>("PositionDropDown", commandType: CommandType.StoredProcedure).ToList();
                 }
+                catch (Exception e)
+                {
+                    // Write failure to database
+                    var ep = new DynamicParameters();
+
+                    ep.Add("ExceptionType", e.GetType());
+                    ep.Add("ExceptionMessage", e.Message);
+                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                }
                 finally
                 {
                     cn.Close();
@@ -64,6 +82,15 @@ namespace BaseballLeague.Data
                 try
                 {
                     leagues = cn.Query<League>("LeagueDropDown", commandType: CommandType.StoredProcedure).ToList();
+                }
+                catch (Exception e)
+                {
+                    // Write failure to database
+                    var ep = new DynamicParameters();
+
+                    ep.Add("ExceptionType", e.GetType());
+                    ep.Add("ExceptionMessage", e.Message);
+                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
                 }
                 finally
                 {

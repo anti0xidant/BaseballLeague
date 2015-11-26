@@ -59,7 +59,7 @@ namespace BaseballLeague.BLL
         public List<Team> GetTeams()
         {
             var read = new Read();
-
+            
             return read.GetTeams();
         }
 

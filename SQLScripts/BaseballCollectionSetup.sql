@@ -58,6 +58,15 @@ CONSTRAINT FK_PlayerPosition2 FOREIGN KEY (SecondaryPositionID)
 )
 GO
 
+CREATE TABLE dbo.Exception
+(
+	ExceptionID int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	ExceptionType nvarchar(100) NOT NULL,
+	ExceptionMessage nvarchar(300),
+	ExceptionDate datetime NOT NULL,
+	Input text
+)
+
 -- **********************************
 -- Insert Sample Data
 -- **********************************

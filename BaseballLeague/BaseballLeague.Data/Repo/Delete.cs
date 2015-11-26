@@ -25,6 +25,14 @@ namespace BaseballLeague.Data
 
                     cn.Execute("DeletePlayer", p, commandType: CommandType.StoredProcedure);
                 }
+                catch (Exception e)
+                {
+                    var ep = new DynamicParameters();
+
+                    ep.Add("ExceptionType", e.GetType());
+                    ep.Add("ExceptionMessage", e.Message);
+                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                }
                 finally
                 {
                     cn.Close();

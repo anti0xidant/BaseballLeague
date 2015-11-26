@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Caching;
 using BaseballLeague.Data.Config;
 using BaseballLeague.Models;
 using Dapper;
@@ -18,19 +19,28 @@ namespace BaseballLeague.Data
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                var freeAgents = new List<Player>();
+                var players = new List<Player>();
 
                 try
                 {
-                    freeAgents =
+                    players =
                         cn.Query<Player>("DisplayFreeAgents", commandType: CommandType.StoredProcedure).ToList();
+                }
+                catch (Exception e)
+                {
+                    // Write failure to database
+                    var ep = new DynamicParameters();
+
+                    ep.Add("ExceptionType", e.GetType());
+                    ep.Add("ExceptionMessage", e.Message);
+                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
                 }
                 finally
                 {
                     cn.Close();
                 }
 
-                return freeAgents;
+                return players;
             }
         }
 
@@ -39,19 +49,29 @@ namespace BaseballLeague.Data
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                var nonFreeAgents = new List<Player>();
+                var players = new List<Player>();
 
                 try
                 {
-                    nonFreeAgents =
+                    players=
                         cn.Query<Player>("ViewAllPlayers", commandType: CommandType.StoredProcedure).ToList();
+                   
+                }
+                catch (Exception e)
+                {
+                    // Write failure to database
+                    var ep = new DynamicParameters();
+
+                    ep.Add("ExceptionType", e.GetType());
+                    ep.Add("ExceptionMessage", e.Message);
+                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
                 }
                 finally
                 {
                     cn.Close();
                 }
 
-                return nonFreeAgents;
+                return players;
             }
         }
 
@@ -60,20 +80,31 @@ namespace BaseballLeague.Data
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
-                var teamRoster = new List<Player>();
-                var p = new DynamicParameters();
+                var players = new List<Player>();
 
                 try
                 {
+                    var p = new DynamicParameters();
+
                     p.Add("TeamID", TeamID);
-                    teamRoster = cn.Query<Player>("ViewRoster", p, commandType: CommandType.StoredProcedure).ToList();
+                    players= cn.Query<Player>("ViewRoster", p, commandType: CommandType.StoredProcedure).ToList();
+                }
+                catch (Exception e)
+                {
+                    // Write failure to database
+                    var ep = new DynamicParameters();
+
+                    ep.Add("ExceptionType", e.GetType());
+                    ep.Add("ExceptionMessage", e.Message);
+                    ep.Add("Input", "Team ID = " + TeamID);
+                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
                 }
                 finally
                 {
                     cn.Close();
                 }
 
-                return teamRoster;
+                return players;
             }
         } 
 
@@ -87,6 +118,15 @@ namespace BaseballLeague.Data
                 try
                 {
                     teams = cn.Query<Team>("ViewTeams", commandType: CommandType.StoredProcedure).ToList();
+
+                }
+                catch(Exception e)
+                {
+                    var p = new DynamicParameters();
+
+                    p.Add("ExceptionType", e.GetType());
+                    p.Add("ExceptionMessage", e.Message);
+                    cn.Execute("AddError", p, commandType: CommandType.StoredProcedure);
                 }
                 finally
                 {

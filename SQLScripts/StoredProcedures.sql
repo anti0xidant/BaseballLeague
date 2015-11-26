@@ -11,8 +11,7 @@ CREATE PROCEDURE CreateTeam
 	@TeamID			int output
 )
 
-AS
-BEGIN
+AS BEGIN
 
 INSERT INTO Teams
 (
@@ -48,8 +47,7 @@ CREATE PROCEDURE AddPlayer
 	@PlayerID				int output
 )
 
-AS
-BEGIN
+AS BEGIN
 
 INSERT INTO Player
 (
@@ -87,8 +85,7 @@ CREATE PROCEDURE TradePlayer
 	@TeamID		int
 )
 
-AS
-BEGIN
+AS BEGIN
 
 UPDATE Player
 SET	TeamID = @TeamID
@@ -105,8 +102,7 @@ CREATE PROCEDURE DeletePlayer
 	@PlayerID	int
 )
 
-AS
-BEGIN
+AS BEGIN
 
 DELETE FROM Player
 
@@ -122,8 +118,7 @@ CREATE PROCEDURE ReleasePlayer
 	@PlayerID	 int
 )
 
-AS 
-BEGIN
+AS  BEGIN
 
 UPDATE Player
 SET TeamID = 1
@@ -137,8 +132,7 @@ GO
 
 CREATE PROCEDURE DisplayFreeAgents
 
-AS
-BEGIN
+AS BEGIN
 
 SELECT 
 	pl.PlayerID, 
@@ -162,8 +156,7 @@ GO
 
 CREATE PROCEDURE ViewAllPlayers
 
-AS
-BEGIN
+AS BEGIN
 
 SELECT 
 	pl.PlayerID, 
@@ -193,8 +186,7 @@ CREATE PROCEDURE ViewRoster
 	@TeamID	 int
 )
 
-AS
-BEGIN
+AS BEGIN
 
 SELECT 
 	pl.PlayerID, 
@@ -218,8 +210,7 @@ GO
 
 CREATE PROCEDURE ViewTeams	
 
-AS
-BEGIN
+AS BEGIN
 
 SELECT 
 	t.TeamID, 
@@ -240,8 +231,7 @@ GO
 
 CREATE PROCEDURE LeagueDropDown
 
-AS
-BEGIN
+AS BEGIN
 
 SELECT 
 	LeagueID,
@@ -256,8 +246,7 @@ GO
 
 CREATE PROCEDURE TeamDropDown
 
-AS 
-BEGIN
+AS BEGIN
 
 SELECT
 	TeamID,
@@ -272,8 +261,7 @@ GO
 
 CREATE PROCEDURE PositionDropDown
 
-AS
-BEGIN
+AS BEGIN
 
 SELECT
 	PositionID,
@@ -286,3 +274,32 @@ GO
 
 --------------------------------------------------------------------
 
+CREATE PROCEDURE AddError
+(
+	@ExceptionType nvarchar(100),
+	@ExceptionMessage nvarchar(300),
+	@ExceptionDate datetime,
+	@Input text
+)
+
+AS
+BEGIN
+
+INSERT INTO Exception
+(
+	ExceptionType,
+	ExceptionMessage,
+	ExceptionDate,
+	Input
+)
+
+VALUES
+(
+	@ExceptionType,
+	@ExceptionMessage,
+	GetDate(),
+	@Input
+)
+
+END
+GO
