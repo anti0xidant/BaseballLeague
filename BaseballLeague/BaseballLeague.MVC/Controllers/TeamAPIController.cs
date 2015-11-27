@@ -51,8 +51,22 @@ namespace BaseballLeague.MVC.Controllers
             return ops.GetTeamRoster(TeamID);
         }
 
+        #endregion
+
+        #region Release Player Modal
+
+        // Used for releasing a signed player into Free Agent
+        [HttpPut]
+        [ActionName("ReleasePlayer")]
+        public void PutReleasePlayer(int PlayerID)
+        {
+            var ops = new BaseballBLL();
+
+            ops.ReleasePlayer(PlayerID);
+        }
 
         #endregion
+
 
         #region Sign Free Agent Modal
 

@@ -38,13 +38,6 @@ namespace BaseballLeague.MVC.Controllers
             return response;
         }
 
-        [HttpPut]
-        [ActionName("ReleasePlayer")]
-        public void PutReleasePlayer(int PlayerID)
-        {
-            var ops = new BaseballBLL();
 
-            ops.ReleasePlayer(PlayerID);
-        }
     }
 }
