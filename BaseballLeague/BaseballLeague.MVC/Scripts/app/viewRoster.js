@@ -1,6 +1,5 @@
-﻿var uriTrade = "/api/TradeAPI";
+﻿$(document).ready(function () {
 
-$(document).ready(function () {
     // Show Sign Free Agent Modal and AJAX call to populate the Free Agents List
     $('#btnShowSignFreeAgent').click(function () {
         $('#signFreeAgentModal').modal('show');
