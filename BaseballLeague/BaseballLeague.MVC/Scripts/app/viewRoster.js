@@ -36,13 +36,11 @@ $(document).ready(function () {
 
 function signFreeAgent(TeamID, PlayerID) {
     $.ajax({
-        url: '/api/TradeAPI/SignFreeAgent/',
+        url: '/api/TradeAPI/SignFreeAgent?TeamID=' + TeamID + "&PlayerID=" + PlayerID,
         type: 'PUT',
-        contentType: 'application/json',
-        data: JSON.stringify({ TeamID: TeamID, PlayerID: PlayerID }),
         success: function(data, status, xhr) {
-            loadRoster(TeamID);
             $('#signFreeAgentModal').modal('hide');
+            loadRoster(TeamID);
             setupButtons();
         },
         error: function(xhr, status, err) {

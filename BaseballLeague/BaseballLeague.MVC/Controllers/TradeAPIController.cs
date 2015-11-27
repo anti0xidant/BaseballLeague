@@ -32,6 +32,8 @@ namespace BaseballLeague.MVC.Controllers
 
         }
         
+        [HttpPut]
+        [ActionName("SignFreeAgent")]
         public void PutSignFreeAgent(int TeamID, int PlayerID)
         {
             var ops = new BaseballBLL();
