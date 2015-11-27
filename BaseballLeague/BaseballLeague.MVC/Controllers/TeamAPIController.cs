@@ -30,7 +30,15 @@ namespace BaseballLeague.MVC.Controllers
             return response;
 
         }
+        
+        [HttpGet]
+        [ActionName("GetFreeAgents")]
+        public List<Player> GetFreeAgents()
+        {
+            var ops = new BaseballBLL();
 
+            return ops.GetFreeAgents();
+        } 
     }
     
 }

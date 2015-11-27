@@ -1,10 +1,60 @@
 ﻿var uriTrade = "/api/TradeAPI";
 
 $(document).ready(function () {
+    // Show Sign Free Agent Modal and AJAX call to populate the Free Agents List
     $('#btnShowSignFreeAgent').click(function () {
         $('#signFreeAgentModal').modal('show');
+
+        $.ajax({
+            url: '/api/TeamAPI/GetFreeAgents',
+            type: 'GET',
+            success: function(data, status, xhr) {
+                $('#freeAgentModalTBody').empty();
+
+                $.each(data, function(index, player) {
+                    $(createTableDataFreeAgents(player)).appendTo($('#freeAgentModalTBody'));
+                });
+            }
+        });
     });
 
+    $(document).on("click", ".btnSignFreeAgent", function() {
+
+        var PlayerID = $(this).val();
+        var TeamID = $('#currentTeamID').val();
+
+        $.ajax({
+            url: '/api/TradeAPI/SignFreeAgent?TeamID=' + TeamID + "&PlayerID=" + PlayerID,
+            type: 'PUT',
+            success: function (data, status, xhr) {
+                $('#signFreeAgentModal').modal('hide');
+                loadRoster(TeamID);
+                setupButtons();
+            },
+            error: function (xhr, status, err) {
+                alert('error:' + err);
+            }
+        });
+
+    });
+    //$('.btnSignFreeAgent').click(function () {
+    //    var PlayerID = $(this).val();
+    //    var TeamID = $('#currentTeamID').val();
+
+    //    $.ajax({
+    //        url: '/api/TradeAPI/SignFreeAgent?TeamID=' + TeamID + "&PlayerID=" + PlayerID,
+    //        type: 'PUT',
+    //        success: function(data, status, xhr) {
+    //            $('#signFreeAgentModal').modal('hide');
+    //            loadRoster(TeamID);
+    //            setupButtons();
+    //        },
+    //        error: function(xhr, status, err) {
+    //            alert('error:' + err);
+    //        }
+    //    });
+    //});
+    
     $('#btnMakeTrade').click(function () {
         var playerTrade = {};
 
@@ -47,21 +97,6 @@ $(document).ready(function () {
 
 });
 
-function signFreeAgent(TeamID, PlayerID) {
-    $.ajax({
-        url: '/api/TradeAPI/SignFreeAgent?TeamID=' + TeamID + "&PlayerID=" + PlayerID,
-        type: 'PUT',
-        success: function(data, status, xhr) {
-            $('#signFreeAgentModal').modal('hide');
-            loadRoster(TeamID);
-            setupButtons();
-        },
-        error: function(xhr, status, err) {
-            alert('error:' + err);
-        }
-    });
-};
-
 
 //This function will be called anytime dynamic trade and release buttons are added to the screen
 function setupButtons() {
@@ -101,17 +136,6 @@ function loadRoster(TeamID) {
             });
         }
     });
-    //$.getJSON('/api/TradeAPI/GetFullRoster?TeamID=' + TeamID)
-    //    .done(function(data) {
-    //        $('#teamRoster').empty();
-
-    //        var playerCount = 0;
-    //        $.each(data, function(index, player) {
-    //            playerCount++;
-    //            $(createTableDataPlayer(player, playerCount)).appendTo($('#teamRoster'));
-
-    //        });
-    //    });
 };
 
 function createTableDataPlayer(player, count) {
@@ -119,7 +143,9 @@ function createTableDataPlayer(player, count) {
         '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=' + player.PlayerID + '>Release</button></td></tr>';
 }
 
-
+function createTableDataFreeAgents(player) {
+    return '<tr><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnSignFreeAgent\" value=' + player.PlayerID + '>Sign</button></td></tr>';
+}
 
 
 
