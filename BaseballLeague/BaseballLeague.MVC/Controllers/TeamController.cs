@@ -37,17 +37,6 @@ namespace BaseballLeague.MVC.Controllers
             return PartialView(leagues);
         }
 
-
-        public ActionResult _SignFreeAgentModal(int TeamID, string TeamName)
-        {
-            var ops = new BaseballBLL();
-            var freeAgents = ops.GetFreeAgents();
-
-            var FreeAgentVM = new SignFreeAgentViewModel(TeamID, TeamName, freeAgents);
-
-            return PartialView(FreeAgentVM);
-        }
-
         public ActionResult _TradePlayerModal()
         {
             var ops = new BaseballBLL();
