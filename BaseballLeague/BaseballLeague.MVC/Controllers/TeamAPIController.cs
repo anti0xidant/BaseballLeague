@@ -12,6 +12,8 @@ namespace BaseballLeague.MVC.Controllers
     public class TeamAPIController : ApiController
     {
         #region Team Index Page
+
+        // Used for building table of all active teams
         [HttpGet]
         [ActionName("GetAllTeams")]
         public List<Team> GetAllTeams()
@@ -20,9 +22,10 @@ namespace BaseballLeague.MVC.Controllers
             return ops.GetTeams();
         }
 
+        // Used for adding new team to list of teams
         [HttpPost]
         [ActionName("PostNewTeam")]
-        public HttpResponseMessage Post(Team newTeam)
+        public HttpResponseMessage PostNewTeam(Team newTeam)
         {
             var ops = new BaseballBLL();
             ops.AddTeam(newTeam);
@@ -33,13 +36,27 @@ namespace BaseballLeague.MVC.Controllers
             response.Headers.Location = new Uri(uri);
 
             return response;
-
         }
 
         #endregion
 
-        #region Sign FreeAgent Modal
+        #region Specific Team Page
 
+        // Used for building table of all players on a specific team.
+        [HttpGet]
+        [ActionName("GetFullRoster")]
+        public List<Player> GetFullRoster(int TeamID)
+        {
+            var ops = new BaseballBLL();
+            return ops.GetTeamRoster(TeamID);
+        }
+
+
+        #endregion
+
+        #region Sign Free Agent Modal
+
+        // Used for building table of available Free Agents in Free Agent Modal
         [HttpGet]
         [ActionName("GetFreeAgents")]
         public List<Player> GetFreeAgents()
@@ -49,7 +66,18 @@ namespace BaseballLeague.MVC.Controllers
             return ops.GetFreeAgents();
         }
 
+
+        // Used for acquiring a Free Agent onto specific team.
+        [HttpPut]
+        [ActionName("SignFreeAgent")]
+        public void PutSignFreeAgent(int TeamID, int PlayerID)
+        {
+            var ops = new BaseballBLL();
+
+            ops.TradePlayer(PlayerID, TeamID); 
+        }
+
         #endregion
     }
-    
+
 }
