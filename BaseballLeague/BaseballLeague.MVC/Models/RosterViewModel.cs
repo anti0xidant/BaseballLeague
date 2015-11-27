@@ -10,13 +10,11 @@ namespace BaseballLeague.MVC.Models
     {
         public int TeamID { get; set; }
         public string TeamName { get; set; }
-        public List<Player>Players { get; set; }
 
-        public RosterViewModel(int teamID, string teamName, List<Player> playerList)
+        public RosterViewModel(int teamID, string teamName)
         {
             TeamID = teamID;
             TeamName = teamName;
-            Players = playerList;
         }
     }
 }
