@@ -26,15 +26,15 @@ namespace BaseballLeague.Data
                     players =
                         cn.Query<Player>("DisplayFreeAgents", commandType: CommandType.StoredProcedure).ToList();
                 }
-                catch (Exception e)
-                {
-                    // Write failure to database
-                    var ep = new DynamicParameters();
+                //catch (Exception e)
+                //{
+                //    // Write failure to database
+                //    var ep = new DynamicParameters();
 
-                    ep.Add("ExceptionType", e.GetType());
-                    ep.Add("ExceptionMessage", e.Message);
-                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
-                }
+                //    ep.Add("ExceptionType", e.GetType());
+                //    ep.Add("ExceptionMessage", e.Message);
+                //    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                //}
                 finally
                 {
                     cn.Close();
@@ -57,15 +57,15 @@ namespace BaseballLeague.Data
                         cn.Query<Player>("ViewAllPlayers", commandType: CommandType.StoredProcedure).ToList();
                    
                 }
-                catch (Exception e)
-                {
-                    // Write failure to database
-                    var ep = new DynamicParameters();
+                //catch (Exception e)
+                //{
+                //    // Write failure to database
+                //    var ep = new DynamicParameters();
 
-                    ep.Add("ExceptionType", e.GetType());
-                    ep.Add("ExceptionMessage", e.Message);
-                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
-                }
+                //    ep.Add("ExceptionType", e.GetType());
+                //    ep.Add("ExceptionMessage", e.Message);
+                //    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                //}
                 finally
                 {
                     cn.Close();
@@ -89,16 +89,16 @@ namespace BaseballLeague.Data
                     p.Add("TeamID", TeamID);
                     players= cn.Query<Player>("ViewRoster", p, commandType: CommandType.StoredProcedure).ToList();
                 }
-                catch (Exception e)
-                {
-                    // Write failure to database
-                    var ep = new DynamicParameters();
+                //catch (Exception e)
+                //{
+                //    // Write failure to database
+                //    var ep = new DynamicParameters();
 
-                    ep.Add("ExceptionType", e.GetType());
-                    ep.Add("ExceptionMessage", e.Message);
-                    ep.Add("Input", "Team ID = " + TeamID);
-                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
-                }
+                //    ep.Add("ExceptionType", e.GetType());
+                //    ep.Add("ExceptionMessage", e.Message);
+                //    ep.Add("Input", "Team ID = " + TeamID);
+                //    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                //}
                 finally
                 {
                     cn.Close();
@@ -120,14 +120,14 @@ namespace BaseballLeague.Data
                     teams = cn.Query<Team>("ViewTeams", commandType: CommandType.StoredProcedure).ToList();
 
                 }
-                catch(Exception e)
-                {
-                    var p = new DynamicParameters();
+                //catch(Exception e)
+                //{
+                //    var p = new DynamicParameters();
 
-                    p.Add("ExceptionType", e.GetType());
-                    p.Add("ExceptionMessage", e.Message);
-                    cn.Execute("AddError", p, commandType: CommandType.StoredProcedure);
-                }
+                //    p.Add("ExceptionType", e.GetType());
+                //    p.Add("ExceptionMessage", e.Message);
+                //    cn.Execute("AddError", p, commandType: CommandType.StoredProcedure);
+                //}
                 finally
                 {
                     cn.Close();

@@ -25,16 +25,16 @@ namespace BaseballLeague.Data
 
                     cn.Execute("ReleasePlayer", p, commandType: CommandType.StoredProcedure);
                 }
-                catch (Exception e)
-                {
-                    // Write failure to database
-                    var ep = new DynamicParameters();
+                //catch (Exception e)
+                //{
+                //    // Write failure to database
+                //    var ep = new DynamicParameters();
 
-                    ep.Add("ExceptionType", e.GetType());
-                    ep.Add("ExceptionMessage", e.Message);
-                    ep.Add("Input", "PlayerID = " + PlayerID);
-                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
-                }
+                //    ep.Add("ExceptionType", e.GetType());
+                //    ep.Add("ExceptionMessage", e.Message);
+                //    ep.Add("Input", "PlayerID = " + PlayerID);
+                //    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                //}
                 finally
                 {
                     cn.Close();

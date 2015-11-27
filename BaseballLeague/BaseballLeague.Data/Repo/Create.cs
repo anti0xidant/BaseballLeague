@@ -77,16 +77,16 @@ namespace BaseballLeague.Data
 
                     team.TeamID = p.Get<int>("TeamID");
                 }
-                catch (Exception e)
-                {
-                    var ep = new DynamicParameters();
+                //catch (Exception e)
+                //{
+                //    var ep = new DynamicParameters();
 
-                    ep.Add("ExceptionType", e.GetType());
-                    ep.Add("ExceptionMessage", e.Message);
-                    ep.Add("Input", String.Format("TeamName = {0}, ManagerName = {1}, LeagueID = {2}",
-                        team.TeamName, team.ManagerName, team.LeagueID));
-                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
-                }
+                //    ep.Add("ExceptionType", e.GetType());
+                //    ep.Add("ExceptionMessage", e.Message);
+                //    ep.Add("Input", String.Format("TeamName = {0}, ManagerName = {1}, LeagueID = {2}",
+                //        team.TeamName, team.ManagerName, team.LeagueID));
+                //    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                //}
                 finally
                 {
                     cn.Close();
