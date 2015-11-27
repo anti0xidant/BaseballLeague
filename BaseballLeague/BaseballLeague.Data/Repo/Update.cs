@@ -56,16 +56,16 @@ namespace BaseballLeague.Data
 
                     cn.Execute("TradePlayer", p, commandType: CommandType.StoredProcedure);
                 }
-                catch (Exception e)
-                {
-                    // Write failure to database
-                    var ep = new DynamicParameters();
+                //catch (Exception e)
+                //{
+                //    // Write failure to database
+                //    var ep = new DynamicParameters();
 
-                    ep.Add("ExceptionType", e.GetType());
-                    ep.Add("ExceptionMessage", e.Message);
-                    ep.Add("Input", String.Format("PlayerID = {0}, TeamID = {1}", PlayerID, TeamID));
-                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
-                }
+                //    ep.Add("ExceptionType", e.GetType());
+                //    ep.Add("ExceptionMessage", e.Message);
+                //    ep.Add("Input", String.Format("PlayerID = {0}, TeamID = {1}", PlayerID, TeamID));
+                //    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                //}
                 finally
                 {
                     cn.Close();

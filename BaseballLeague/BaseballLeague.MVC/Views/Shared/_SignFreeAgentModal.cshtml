@@ -33,7 +33,7 @@
                             <td>@m.PrimaryPosition</td>
                             <td>@m.SecondaryPosition</td>
                             <td>@m.YearsPlayed</td>
-                            <td><a href="/Team/SignPlayer?TeamID=@Model.TeamID&PlayerID=@m.PlayerID&TeamName=@Model.TeamName">Sign</a></td>
+                            <td><input type="button" value="Sign" class="btn btn-xs" onclick="signFreeAgent(@Model.TeamID, @m.PlayerID) "></td>
                         </tr>
                     }
                     </tbody>

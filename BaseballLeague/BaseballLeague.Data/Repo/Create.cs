@@ -36,21 +36,21 @@ namespace BaseballLeague.Data
 
                     player.PlayerID = p.Get<int>("PlayerID");
                 }
-                catch (Exception e)
-                {
-                    var ep = new DynamicParameters();
+                //catch (Exception e)
+                //{
+                //    var ep = new DynamicParameters();
 
-                    ep.Add("ExceptionType", e.GetType());
-                    ep.Add("ExceptionMessage", e.Message);
-                    ep.Add("Input", String.Format("FirstName = {0}, LastName = {1}, JerseyNumber = {2}," +
-                                                  "TeamID = {3}, LastYearBA = {4}, YearsPlayed = {5}, " +
-                                                  "PrimaryPositionID = {6}, SecondaryPositionID = {7}",
-                        player.FirstName, player.LastName, player.JerseyNumber,
-                        player.TeamID, player.LastYearBA, player.YearsPlayed, player.PrimaryPositionID,
-                        player.SecondaryPositionID));
-                    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
+                //    ep.Add("ExceptionType", e.GetType());
+                //    ep.Add("ExceptionMessage", e.Message);
+                //    ep.Add("Input", String.Format("FirstName = {0}, LastName = {1}, JerseyNumber = {2}," +
+                //                                  "TeamID = {3}, LastYearBA = {4}, YearsPlayed = {5}, " +
+                //                                  "PrimaryPositionID = {6}, SecondaryPositionID = {7}",
+                //        player.FirstName, player.LastName, player.JerseyNumber,
+                //        player.TeamID, player.LastYearBA, player.YearsPlayed, player.PrimaryPositionID,
+                //        player.SecondaryPositionID));
+                //    cn.Execute("AddError", ep, commandType: CommandType.StoredProcedure);
 
-                }
+                //}
                 finally
                 {
                     cn.Close();

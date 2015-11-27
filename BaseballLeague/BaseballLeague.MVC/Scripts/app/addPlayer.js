@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 
 function loadPlayers() {
-    $.getJSON(playeruri)
+    $.getJSON(playeruri + '/Get')
         .done(function (data) {
             $('#inputPlayers tr').remove();
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
         }
 
 
-        $.post(playeruri, player)
+        $.post(playeruri + '/Post/', player)
             .done(function () {
                 loadPlayers();
                 $('#addPlayerModal').modal('hide');

@@ -31,5 +31,12 @@ namespace BaseballLeague.MVC.Controllers
             return response;
 
         }
+        
+        public void PutSignFreeAgent(int TeamID, int PlayerID)
+        {
+            var ops = new BaseballBLL();
+
+            ops.TradePlayer(PlayerID, TeamID); // "Trading" from Free Agent to a Team
+        }
     }
 }

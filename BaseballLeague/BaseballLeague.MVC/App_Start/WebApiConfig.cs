@@ -16,6 +16,12 @@ namespace BaseballLeague.MVC
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "FreeAgentApi",
+                routeTemplate: "api/{controller}/{TeamID}/{PlayerID}",
+                defaults: new {TeamID = RouteParameter.Optional, PlayerID = RouteParameter.Optional}
+                );
         }
     }
 }
