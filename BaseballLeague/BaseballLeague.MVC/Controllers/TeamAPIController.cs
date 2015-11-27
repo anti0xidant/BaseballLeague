@@ -32,22 +32,6 @@ namespace BaseballLeague.MVC.Controllers
             return ops.GetLeagueDropDown(); 
         }
 
-        //// Used for adding new team to list of teams
-        //[HttpPost]
-        //[ActionName("PostNewTeam")]
-        //public HttpResponseMessage PostNewTeam(Team NewTeam)
-        //{
-        //    var ops = new BaseballBLL();
-        //    ops.AddTeam(NewTeam);
-
-        //    var response = Request.CreateResponse(HttpStatusCode.Created, NewTeam);
-
-        //    string uri = Url.Link("DefaultApi", new { id = NewTeam.TeamID });
-        //    response.Headers.Location = new Uri(uri);
-
-        //    return response;
-        //}
-
         // Used for adding new team to list of teams
         [HttpPost]
         [ActionName("PostNewTeam")]
@@ -85,7 +69,6 @@ namespace BaseballLeague.MVC.Controllers
         }
 
         #endregion
-
 
         #region Sign Free Agent Modal
 

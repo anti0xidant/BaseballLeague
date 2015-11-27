@@ -67,7 +67,7 @@ function loadTeams() {
 
 // Creates HTML table row of team data which is used to populate the Team Table in loadTeams()
 function createTableDataTeam(team, count) {
-    return '<tr><td>'+ (count + 1) +'</td><td>' + team.TeamName + '</td><td>' + team.ManagerName + '</td><td>' + team.LeagueName + '</td>' + '<td><a href=/Team/PlayersOnTeam?TeamID=' + team.TeamID + '&TeamName=' + team.TeamName +'>View Roster</a></td></tr>';
+    return '<tr class=\"' + team.LeagueID + '\"><td>'+ (count + 1) +'</td><td>' + team.TeamName + '</td><td>' + team.ManagerName + '</td><td>' + team.LeagueName + '</td>' + '<td><a href=/Team/PlayersOnTeam?TeamID=' + team.TeamID + '&TeamName=' + team.TeamName +'>View Roster</a></td></tr>';
 }
 
 // Creates HTML dropdown list Option element
