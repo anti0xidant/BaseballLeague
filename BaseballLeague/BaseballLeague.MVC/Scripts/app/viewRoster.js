@@ -118,13 +118,13 @@ function loadRoster(TeamID) {
     });
 };
 
+// Creates HTML table row of player data which is used to populate Roster Table in loadRoster()
 function createTableDataPlayer(player, count) {
     return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=' + player.PlayerID + '>Trade</button></td>' +
         '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=' + player.PlayerID + '>Release</button></td></tr>';
 }
 
-/* Builds The Free Agents table of SignFreeAgent Modal. The table includes a Sign button which has
-   value of PlayerID */
+// Creates HTML table row of Free Agent data which is used to populate Free Agent Table when modal is launched
 function createTableDataFreeAgents(player) {
     return '<tr><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnSignFreeAgent\" value=' + player.PlayerID + '>Sign</button></td></tr>';
 }
