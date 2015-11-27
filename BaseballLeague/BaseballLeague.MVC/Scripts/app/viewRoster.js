@@ -6,6 +6,9 @@
     // Initial load of team roster
     loadRoster(TeamID);
 
+    // Loads team list dropdown in Trade Player Modal
+    populateDropdownForTradeModal();
+
     // Show Sign Free Agent Modal and AJAX call to populate the Free Agents List
     $('#btnShowSignFreeAgent').click(function () {
         $('#signFreeAgentModal').modal('show');
@@ -32,7 +35,7 @@
         var PlayerID = $(this).val();
 
         $.ajax({
-            url: '/api/TeamAPI/SignFreeAgent?TeamID=' + TeamID + "&PlayerID=" + PlayerID,
+            url: '/api/TeamAPI/SignFreeAgent?TeamID=' + TeamID + '&PlayerID=' + PlayerID,
             type: 'PUT',
             success: function (data, status, xhr) {
                 $('#signFreeAgentModal').modal('hide');
@@ -45,23 +48,26 @@
 
     });
     
+    /* Adds click event to Submit Trade button of Trade Player Modal. This event 
+       grabs PlayerID from the Modal's hidden input and the new team's TeamID from
+       the Team Selector dropdown list. The event finally submits this data to server 
+       using AJAX PUT call */
     $('#btnMakeTrade').click(function () {
-        var playerTrade = {};
-
-        playerTrade.PlayerID = $('#tradePlayerID').val();
-        playerTrade.TeamID = $('#tradeTeamID').val();
-
         
+        var PlayerID = $('#tradePlayerID').val();
+        var NewTeamID = $('#tradeTeamID').val();
 
-
-        $.post(uriTrade, playerTrade)
-            .done(function () {
-                loadRoster($('#currentTeamIDModal').val());
+        $.ajax({
+            url: '/api/TeamAPI/TradePlayerToAnotherTeam?PlayerID=' + PlayerID + '&TeamID=' + NewTeamID,
+            type: 'PUT',
+            success: function(data, status, xhr) {
                 $('#tradePlayerModal').modal('hide');
-            })
-            .fail(function (jqXhr, status, err) {
-                alert(status + ' - ' + err);
-            });
+                loadRoster(TeamID);
+            },
+            error: function(xhr, status, err) {
+                getCompositionAlternatives('error:' + err);
+            }
+        });
     });
 
     /* This function grabs PlayerID from Release Player Modal's hidden input and releases
@@ -80,23 +86,25 @@
                 alert('error:' + err);
             }
         });
-        
     });
 
+    /* Adds click event to Trade button which launches Trade Player Modal and stores
+       PlayerID as a hidden input in the Trade Player Modal. This click event is added whenever 
+       a new button is created  */
     $('#table').on('click', '.btnTradePlayer', function () {
 
         $('#tradePlayerModal').modal('show');
-        //$('#tradePlayerID').val($(this).val());
-        //$('#currentTeamIDModal').val($('#currentTeamID').val());
-        //var table = $("#table")[0];
-        //var cell = table.rows[5].cells[1];
-        //alert($(cell).text());
+        $('#tradePlayerID').val($(this).val());
+
     });
 
+    /* Adds click event to Release button which launches the Release Player Modal and stores
+       PlayerID as a hidden input in the Release Player Modal. This click event is added whenever
+       a new button is created */
     $('#table').on('click', '.btnReleasePlayer', function () {
 
-        $('#releasePlayerModal').modal('show');     // Show the modal
-        $('#releasePlayerID').val($(this).val());   // Assign PlayerID to hidden input
+        $('#releasePlayerModal').modal('show');    
+        $('#releasePlayerID').val($(this).val());
 
     });
 
@@ -118,15 +126,35 @@ function loadRoster(TeamID) {
     });
 };
 
+// Populates team dropdown in Trade Player Modal. Skips option for Free Agent
+function populateDropdownForTradeModal() {
+    $.ajax({
+        url: '/api/TeamAPI/GetTeamsDropDown',
+        type: 'GET',
+        success: function(data, status, xhr) {
+            $.each(data, function(index, team) {
+                if (team.Name != 'Free Agent') {
+                    $(createTeamsDropdownForTradeModal(team)).appendTo($('#tradeTeamID'));
+                }
+            });
+        }
+    });
+}
+
 // Creates HTML table row of player data which is used to populate Roster Table in loadRoster()
 function createTableDataPlayer(player, count) {
-    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=' + player.PlayerID + '>Trade</button></td>' +
-        '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=' + player.PlayerID + '>Release</button></td></tr>';
+    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=\"' + player.PlayerID + '\">Trade</button></td>' +
+        '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=\"' + player.PlayerID + '\">Release</button></td></tr>';
 }
 
 // Creates HTML table row of Free Agent data which is used to populate Free Agent Table when modal is launched
 function createTableDataFreeAgents(player) {
     return '<tr><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnSignFreeAgent\" value=' + player.PlayerID + '>Sign</button></td></tr>';
+}
+
+// Create HTML option element for Team drop down which will be used in Trade Player Modal
+function createTeamsDropdownForTradeModal(team) {
+    return '<option value=\"' + team.TeamID + '\">' + team.TeamName + '</option>';
 }
 
 

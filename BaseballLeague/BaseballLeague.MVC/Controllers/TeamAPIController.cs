@@ -94,6 +94,31 @@ namespace BaseballLeague.MVC.Controllers
         }
 
         #endregion
+
+        #region Trade Player Modal
+
+        // Used for building teams dropdown list for Trade Player Modal
+        [HttpGet]
+        [ActionName("GetTeamsDropDown")]
+        public List<Team> GetTeamsDropDown()
+        {
+            var ops = new BaseballBLL();
+
+            return ops.GetTeamDropDown();
+        }
+
+        // Used for trading player on team roster to another team
+        [HttpPut]
+        [ActionName("TradePlayerToAnotherTeam")]
+        public void TradePlayerToAnotherTeam(int PlayerID, int TeamID)
+        {
+            var ops = new BaseballBLL();
+
+            ops.TradePlayer(PlayerID, TeamID);
+
+        }
+
+        #endregion
     }
 
 }
