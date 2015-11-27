@@ -11,7 +11,8 @@ namespace BaseballLeague.MVC.Controllers
 {
     public class TradeAPIController : ApiController
     {
-
+        [HttpGet]
+        [ActionName("GetFullRoster")]
         public List<Player> Get(int TeamID)
         {
             var ops = new BaseballBLL();

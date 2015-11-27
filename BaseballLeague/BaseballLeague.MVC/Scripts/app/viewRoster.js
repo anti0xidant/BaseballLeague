@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     $('#btnRelease').click(function () {
         var PlayerID = $('#releasePlayerID').val();
-        var TeamID = $('#releasePlayerTeamID').val();
+        var TeamID = $('#currentTeamID').val();
         $.ajax({
             url: '/api/PlayerAPI/ReleasePlayer?PlayerID=' + PlayerID,
             type: 'PUT',
@@ -87,18 +87,31 @@ function setupButtons() {
 
 function loadRoster(TeamID) {
 
-    var team = {};
+    $.ajax({
+        url: '/api/TradeAPI/GetFullRoster?TeamID=' + TeamID,
+        type: 'GET',
+        success: function(data, status, xhr) {
+            $('#teamRoster').empty();
 
-    team.TeamID = TeamID; 
-    $.getJSON(uriTrade, team)
-        .done(function (data) {
-            $('#table td').remove();
-            var count = 0;
-            $.each(data, function (index, player) {
-                count++;
-                $(createTableDataPlayer(player, count)).appendTo($('#table'));
+            var playerCount = 0;
+            $.each(data, function(index, player) {
+                playerCount++;
+                $(createTableDataPlayer(player, playerCount)).appendTo($('#teamRoster'));
+
             });
-        });
+        }
+    });
+    //$.getJSON('/api/TradeAPI/GetFullRoster?TeamID=' + TeamID)
+    //    .done(function(data) {
+    //        $('#teamRoster').empty();
+
+    //        var playerCount = 0;
+    //        $.each(data, function(index, player) {
+    //            playerCount++;
+    //            $(createTableDataPlayer(player, playerCount)).appendTo($('#teamRoster'));
+
+    //        });
+    //    });
 };
 
 function createTableDataPlayer(player, count) {
