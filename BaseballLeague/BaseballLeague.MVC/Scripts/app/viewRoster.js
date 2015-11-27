@@ -133,7 +133,7 @@ function populateDropdownForTradeModal() {
         type: 'GET',
         success: function(data, status, xhr) {
             $.each(data, function(index, team) {
-                if (team.Name != 'Free Agent') {
+                if (team.TeamName != 'Free Agent') {
                     $(createTeamsDropdownForTradeModal(team)).appendTo($('#tradeTeamID'));
                 }
             });
