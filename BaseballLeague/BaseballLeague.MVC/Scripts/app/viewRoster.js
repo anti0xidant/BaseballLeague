@@ -26,8 +26,21 @@ $(document).ready(function () {
     });
 
     $('#btnRelease').click(function () {
-
-        $('#releasePlayerModal').modal('hide');
+        var PlayerID = $('#releasePlayerID').val();
+        var TeamID = $('#releasePlayerTeamID').val();
+        $.ajax({
+            url: '/api/PlayerAPI/ReleasePlayer?PlayerID=' + PlayerID,
+            type: 'PUT',
+            success: function (data, status, xhr) {
+                $('#releasePlayerModal').modal('hide');
+                loadRoster(TeamID);
+                setupButtons();
+            },
+            error: function (xhr, status, err) {
+                alert('error:' + err);
+            }
+        });
+        
     });
 
     setupButtons();
@@ -67,6 +80,7 @@ function setupButtons() {
 
         $('#releasePlayerModal').modal('show');
         $('#releasePlayerID').val($(this).val());
+        $('#releasePlayerTeamID').val($('#currentTeamID').val());
     });
 
 };
