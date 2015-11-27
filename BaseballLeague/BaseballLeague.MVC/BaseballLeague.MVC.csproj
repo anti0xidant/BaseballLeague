@@ -196,6 +196,7 @@
     <Content Include="Scripts\app\addTeam.js" />
     <Content Include="Scripts\app\deletePlayer.js" />
     <Content Include="Scripts\app\filterByLeague.js" />
+    <Content Include="Scripts\app\SearchBar.js" />
     <Content Include="Scripts\app\viewRoster.js" />
     <Content Include="Scripts\app\filterPlayersByTeamDropdown.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -203,6 +204,8 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.hideseek.js" />
+    <Content Include="Scripts\jquery.hideseek.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
@@ -254,7 +257,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56728</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

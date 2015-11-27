@@ -11,33 +11,35 @@
                 <h4 class="modal-title" id="myModalLabel">Sign Free Agent to @Model.TeamName</h4>
             </div>
             <div class="modal-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Jersey Number</th>
-                                <th>Last Year's Batting Avg.</th>
-                                <th>Main Position</th>
-                                <th>Secondary Position</th>
-                                <th>Years Played</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var m in Model.FreeAgents)
-                            {
-                                <tr>
-                                    <td>@m.Name</td>
-                                    <td>@m.JerseyNumber</td>
-                                    <td>@m.LastYearBA</td>
-                                    <td>@m.PrimaryPosition</td>
-                                    <td>@m.SecondaryPosition</td>
-                                    <td>@m.YearsPlayed</td>
-                                    <td><a href="/Team/SignPlayer?TeamID=@Model.TeamID&PlayerID=@m.PlayerID&TeamName=@Model.TeamName">Sign</a></td>
-                                </tr>               }
-                        </tbody>
-                    </table>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Jersey Number</th>
+                        <th>Last Year's Batting Avg.</th>
+                        <th>Main Position</th>
+                        <th>Secondary Position</th>
+                        <th>Years Played</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var m in Model.FreeAgents)
+                    {
+                        <tr>
+                            <td>@m.Name</td>
+                            <td>@m.JerseyNumber</td>
+                            <td>@m.LastYearBA</td>
+                            <td>@m.PrimaryPosition</td>
+                            <td>@m.SecondaryPosition</td>
+                            <td>@m.YearsPlayed</td>
+                            <td><a href="/Team/SignPlayer?TeamID=@Model.TeamID&PlayerID=@m.PlayerID&TeamName=@Model.TeamName">Sign</a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
