@@ -18,6 +18,10 @@ $(document).ready(function () {
         });
     });
 
+    // Used .on() instead of .click() because .on() also adds event handlers to future elements 
+    // whereas .click() only adds to elements that exist during initial load.
+    // The 'Sign' button of SignFreeAgent modal do not exist until the modal is displayed,
+    // therefore, .on() is the appropriate choice. .on() is a combination of .live() and .bind().
     $(document).on("click", ".btnSignFreeAgent", function() {
 
         var PlayerID = $(this).val();
@@ -37,23 +41,6 @@ $(document).ready(function () {
         });
 
     });
-    //$('.btnSignFreeAgent').click(function () {
-    //    var PlayerID = $(this).val();
-    //    var TeamID = $('#currentTeamID').val();
-
-    //    $.ajax({
-    //        url: '/api/TradeAPI/SignFreeAgent?TeamID=' + TeamID + "&PlayerID=" + PlayerID,
-    //        type: 'PUT',
-    //        success: function(data, status, xhr) {
-    //            $('#signFreeAgentModal').modal('hide');
-    //            loadRoster(TeamID);
-    //            setupButtons();
-    //        },
-    //        error: function(xhr, status, err) {
-    //            alert('error:' + err);
-    //        }
-    //    });
-    //});
     
     $('#btnMakeTrade').click(function () {
         var playerTrade = {};
@@ -120,7 +107,10 @@ function setupButtons() {
 
 };
 
-function loadRoster(TeamID) {
+// Uses the TeamID from the Team Index page to make an AJAX call to retrieve complete roster from API.
+// Upon success, the roster table is FIRST cleared, THEN repopulated with data from the AJAX call.
+function loadRoster() {
+    var TeamID = $('#currentTeamID').val();
 
     $.ajax({
         url: '/api/TradeAPI/GetFullRoster?TeamID=' + TeamID,
@@ -143,6 +133,8 @@ function createTableDataPlayer(player, count) {
         '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=' + player.PlayerID + '>Release</button></td></tr>';
 }
 
+// Builds The Free Agents table of SignFreeAgent Modal. The table includes a Sign button which has
+// value of PlayerID
 function createTableDataFreeAgents(player) {
     return '<tr><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnSignFreeAgent\" value=' + player.PlayerID + '>Sign</button></td></tr>';
 }

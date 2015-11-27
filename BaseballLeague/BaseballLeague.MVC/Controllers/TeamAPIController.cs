@@ -11,12 +11,17 @@ namespace BaseballLeague.MVC.Controllers
 {
     public class TeamAPIController : ApiController
     {
-        public List<Team> Get()
+        #region Team Index Page
+        [HttpGet]
+        [ActionName("GetAllTeams")]
+        public List<Team> GetAllTeams()
         {
             var ops = new BaseballBLL();
             return ops.GetTeams();
         }
 
+        [HttpPost]
+        [ActionName("PostNewTeam")]
         public HttpResponseMessage Post(Team newTeam)
         {
             var ops = new BaseballBLL();
@@ -30,7 +35,11 @@ namespace BaseballLeague.MVC.Controllers
             return response;
 
         }
-        
+
+        #endregion
+
+        #region Sign FreeAgent Modal
+
         [HttpGet]
         [ActionName("GetFreeAgents")]
         public List<Player> GetFreeAgents()
@@ -38,7 +47,9 @@ namespace BaseballLeague.MVC.Controllers
             var ops = new BaseballBLL();
 
             return ops.GetFreeAgents();
-        } 
+        }
+
+        #endregion
     }
     
 }
