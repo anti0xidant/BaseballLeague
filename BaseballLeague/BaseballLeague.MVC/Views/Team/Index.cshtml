@@ -1,7 +1,4 @@
-﻿@using BaseballLeague.Models
-@model BaseballLeague.MVC.Models.TeamsViewModel
-
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
@@ -13,10 +10,6 @@
 <div>
     <select class="form-control col-lg-offset-9 col-lg-4" id="selectLeague">
         <option value="All">All</option>
-        @foreach (var l in Model.Leagues)
-        {
-            <option value=@l.Value>@l.Text</option>
-        }
     </select>
 </div>
 <table class="table table-striped table-hover">
@@ -30,23 +23,11 @@
     </tr>
     </thead>
     <tbody class="searchable" id="teamsTable">
-    @if (Model.Teams.Any())
-    {
-        foreach (var m in Model.Teams)
-         {
-             <tr class="@m.LeagueID">
-                 <td>@(Model.Teams.IndexOf(m) + 1)</td>
-                 <td>@m.TeamName</td>
-                 <td>@m.ManagerName</td>
-                 <td>@m.LeagueName</td>
-                 <td><a href="/Team/PlayersOnTeam?TeamID=@m.TeamID&TeamName=@m.TeamName">View Roster</a></td>
-             </tr>
-         }
-    }
+
     </tbody>
 </table>
 
-@{ Html.RenderAction("_AddTeamModal", "Team");}
+@Html.Partial("_AddTeamModal")
 
 @section Scripts{
     <script type="text/javascript" src="~/Scripts/app/addTeam.js"></script>

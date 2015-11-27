@@ -22,20 +22,39 @@ namespace BaseballLeague.MVC.Controllers
             return ops.GetTeams();
         }
 
+        // Used for building dropdown list of leagues in New Team modal
+        [HttpGet]
+        [ActionName("GetLeagueDropDown")]
+        public List<League> GetLeagueDropDown()
+        {
+            var ops = new BaseballBLL();
+
+            return ops.GetLeagueDropDown(); 
+        }
+
+        //// Used for adding new team to list of teams
+        //[HttpPost]
+        //[ActionName("PostNewTeam")]
+        //public HttpResponseMessage PostNewTeam(Team NewTeam)
+        //{
+        //    var ops = new BaseballBLL();
+        //    ops.AddTeam(NewTeam);
+
+        //    var response = Request.CreateResponse(HttpStatusCode.Created, NewTeam);
+
+        //    string uri = Url.Link("DefaultApi", new { id = NewTeam.TeamID });
+        //    response.Headers.Location = new Uri(uri);
+
+        //    return response;
+        //}
+
         // Used for adding new team to list of teams
         [HttpPost]
         [ActionName("PostNewTeam")]
-        public HttpResponseMessage PostNewTeam(Team newTeam)
+        public void PostNewTeam(Team NewTeam)
         {
             var ops = new BaseballBLL();
-            ops.AddTeam(newTeam);
-
-            var response = Request.CreateResponse(HttpStatusCode.Created, newTeam);
-
-            string uri = Url.Link("DefaultApi", new { id = newTeam.TeamID });
-            response.Headers.Location = new Uri(uri);
-
-            return response;
+            ops.AddTeam(NewTeam);
         }
 
         #endregion

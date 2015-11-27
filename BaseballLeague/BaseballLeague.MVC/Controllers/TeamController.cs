@@ -13,13 +13,7 @@ namespace BaseballLeague.MVC.Controllers
         // GET: Team
         public ActionResult Index()
         {
-            var ops = new BaseballBLL();
-            var teams = ops.GetTeams();
-            var leagues = ops.GetLeagueDropDown();
-            
-            var teamVM = new TeamsViewModel(teams, leagues);
-           
-            return View(teamVM);
+            return View();
         }
 
         public ActionResult PlayersOnTeam(int TeamID, string TeamName)
@@ -27,24 +21,6 @@ namespace BaseballLeague.MVC.Controllers
             var RosterVM = new RosterViewModel(TeamID, TeamName);
 
             return View(RosterVM);
-        }
-
-        public ActionResult _AddTeamModal()
-        {
-            var ops = new BaseballBLL();
-            var leagues = ops.GetLeagueDropDown();
-
-            return PartialView(leagues);
-        }
-
-        public ActionResult _TradePlayerModal()
-        {
-            var ops = new BaseballBLL();
-            var teams= ops.GetTeams();
-
-            var tradePlayerVM = new TradePlayerViewModel(teams);
-
-            return PartialView(tradePlayerVM);
         }
 
         public ActionResult SignPlayer(int TeamID, int PlayerID, string TeamName)
