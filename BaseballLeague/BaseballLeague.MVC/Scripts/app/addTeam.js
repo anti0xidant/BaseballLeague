@@ -58,10 +58,8 @@ function loadTeams() {
         success: function(data, status, xhr) {
             $('#teamsTable').empty();
 
-            var playerCount = 0;
             $.each(data, function(index, team) {
-                playerCount++;
-                $(createTableDataTeam(team, playerCount)).appendTo($('#teamsTable'));
+                $(createTableDataTeam(team, index)).appendTo($('#teamsTable'));
             });
         }
     });
@@ -69,7 +67,7 @@ function loadTeams() {
 
 // Creates HTML table row of team data which is used to populate the Team Table in loadTeams()
 function createTableDataTeam(team, count) {
-    return '<tr><td>'+ count +'</td><td>' + team.TeamName + '</td><td>' + team.ManagerName + '</td><td>' + team.LeagueName + '</td>' + '<td><a href=/Team/PlayersOnTeam?TeamID=' + team.TeamID + '&TeamName=' + team.TeamName +'>View Roster</a></td></tr>';
+    return '<tr><td>'+ (count + 1) +'</td><td>' + team.TeamName + '</td><td>' + team.ManagerName + '</td><td>' + team.LeagueName + '</td>' + '<td><a href=/Team/PlayersOnTeam?TeamID=' + team.TeamID + '&TeamName=' + team.TeamName +'>View Roster</a></td></tr>';
 }
 
 // Creates HTML dropdown list Option element

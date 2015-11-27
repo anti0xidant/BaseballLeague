@@ -111,17 +111,15 @@ function loadRoster(TeamID) {
         success: function(data, status, xhr) {
             $('#teamRoster').empty();
 
-            var playerCount = 0;
             $.each(data, function(index, player) {
-                playerCount++;
-                $(createTableDataPlayer(player, playerCount)).appendTo($('#teamRoster'));
+                $(createTableDataPlayer(player, index)).appendTo($('#teamRoster'));
             });
         }
     });
 };
 
 function createTableDataPlayer(player, count) {
-    return '<tr><td>' + count + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=' + player.PlayerID + '>Trade</button></td>' +
+    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=' + player.PlayerID + '>Trade</button></td>' +
         '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=' + player.PlayerID + '>Release</button></td></tr>';
 }
 
