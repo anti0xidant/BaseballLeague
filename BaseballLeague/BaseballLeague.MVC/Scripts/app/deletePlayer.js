@@ -1,5 +1,5 @@
 ﻿$(document).ready(function() {
-    $('.btnDeletePlayer').click(function() {
+    $('.btnShowDeletePlayerModal').click(function() {
         $('#deletePlayerModal').modal('show');
     });
 });
