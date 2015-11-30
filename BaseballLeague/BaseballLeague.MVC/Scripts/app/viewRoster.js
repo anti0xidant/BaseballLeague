@@ -92,20 +92,19 @@
        PlayerID as a hidden input in the Trade Player Modal. This click event is added whenever 
        a new button is created  */
     $('#table').on('click', '.btnTradePlayer', function () {
-
-        $('#tradePlayerModal').modal('show');
         $('#tradePlayerID').val($(this).val());
-
+        $('#myModalLabel').html('Trade Player - ' + $('td:nth-child(2)').html());
+        $('#tradePlayerModal').modal('show');
+        
     });
 
     /* Adds click event to Release button which launches the Release Player Modal and stores
        PlayerID as a hidden input in the Release Player Modal. This click event is added whenever
        a new button is created */
     $('#table').on('click', '.btnReleasePlayer', function () {
-
-        $('#releasePlayerModal').modal('show');    
+        $('#playerNameRelease').html($('td:nth-child(2)').html() + '-' + $('td:nth-child(5)').html());
         $('#releasePlayerID').val($(this).val());
-
+        $('#releasePlayerModal').modal('show');
     });
 
 });
@@ -143,7 +142,12 @@ function populateDropdownForTradeModal() {
 
 // Creates HTML table row of player data which is used to populate Roster Table in loadRoster()
 function createTableDataPlayer(player, count) {
-    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=\"' + player.PlayerID + '\">Trade</button></td>' +
+    var secondPosition = '-';
+
+    if (player.SecondaryPosition) {
+        secondPosition = player.SecondaryPosition;
+    }
+    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + secondPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=\"' + player.PlayerID + '\">Trade</button></td>' +
         '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=\"' + player.PlayerID + '\">Release</button></td></tr>';
 }
 
