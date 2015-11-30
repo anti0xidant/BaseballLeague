@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BaseballLeague.BLL;
+using BaseballLeague.Models;
 using BaseballLeague.MVC.Models;
 
 namespace BaseballLeague.MVC.Controllers
@@ -14,10 +15,18 @@ namespace BaseballLeague.MVC.Controllers
         public ActionResult Index()
         {
             var ops = new BaseballBLL();
-            var players = ops.GetNonFreeAgentPlayers();
+            var playerList = new List<Player>();
+            playerList.AddRange(ops.GetNonFreeAgentPlayers());
+            playerList.AddRange(ops.GetFreeAgents());
+            var result = playerList.OrderBy(player => player.TeamName).ThenBy(player => player.JerseyNumber).ToList();
+            foreach (var player in result.Where(player => player.TeamID == 0))
+            {
+                player.TeamID = 1;
+            }
+
             var teams = ops.GetTeamDropDown();
             
-            var vm = new PlayersVM(players, teams);
+            var vm = new PlayersVM(result, teams);
             
             return View(vm);
         }

@@ -18,7 +18,7 @@ namespace BaseballLeague.Models
         public decimal LastYearBA { get; set; }
         public int YearsPlayed { get; set; }
         public int PrimaryPositionID { get; set; }
-        public int SecondaryPositionID { get; set; }
+        public int? SecondaryPositionID { get; set; }
         public string PrimaryPosition { get; set; }
         public string SecondaryPosition { get; set; }
         
