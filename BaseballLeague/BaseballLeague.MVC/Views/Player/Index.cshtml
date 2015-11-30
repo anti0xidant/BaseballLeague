@@ -39,7 +39,23 @@
     </tr>
     </thead>
     <tbody class="searchable" id="inputPlayers">
+    @{ int playerCount = 1; }
+    @foreach (var player in Model.Players)
+    {
+        <tr value="@player.PlayerID" class="@player.TeamID">
+            <td>@playerCount</td>
+            <td>@player.Name</td>
+            <td>@player.JerseyNumber</td>
+            <td>@player.TeamName</td>
+            <td>@player.LastYearBA.ToString().Substring(1)</td>
+            <td>@player.YearsPlayed</td>
+            <td>@player.PrimaryPosition</td>
+            <td>@player.SecondaryPosition</td>
+            <td class="btnShowDeletePlayerModal"><button class="btn btn-xs btn-primary">Delete</button></td>
 
+            @{ playerCount++; }
+        </tr>
+    }
     </tbody>
 </table>
 

@@ -14,8 +14,11 @@ namespace BaseballLeague.MVC.Controllers
         public List<Player> Get()
         {
             var ops = new BaseballBLL();
+            var playerList = new List<Player>();
+            playerList.AddRange(ops.GetNonFreeAgentPlayers());
+            playerList.AddRange(ops.GetFreeAgents());
 
-            return ops.GetNonFreeAgentPlayers();
+            return playerList;
         }
 
         public List<Player> Get(int teamId)
