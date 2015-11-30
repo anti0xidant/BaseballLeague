@@ -192,7 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Scripts\app\addPlayer.js" />
+    <Content Include="Scripts\app\viewManagePlayer.js" />
     <Content Include="Scripts\app\addTeam.js" />
     <Content Include="Scripts\app\deletePlayer.js" />
     <Content Include="Scripts\app\filterByLeague.js" />

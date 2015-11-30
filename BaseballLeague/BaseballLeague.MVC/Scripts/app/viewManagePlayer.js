@@ -14,12 +14,29 @@ function loadPlayers() {
                 playerCount++;
                 $(createTableDataPlayer(player, playerCount)).appendTo($('#inputPlayers'));
             });
+            $(document).ready(function () {
+                $('.btnShowDeletePlayerModal').on("click", function () {
+                    $('#deletePlayerModal').modal('show');
+                    $('#btnDeletePlayer').click(function () {
+                        $.ajax({
+                            url: playeruri + "/Delete/",
+                            type: "DELETE",
+                            success: function () {
+                                $('#deletePlayerModal').modal('hide');
+                            }
+                        });
+                    });
+                });
+            });
         });
 };
 
 function createTableDataPlayer(player) {
     if (player.SecondaryPosition == null) {
         player.SecondaryPosition = "-";
+    };
+    if (player.TeamName == null) {
+        player.TeamName = "Free Agent";
     };
     return '<tr value="' + player.PlayerID + '" class="' + player.TeamID + '"><td>' + playerCount + '</td><td>' + player.Name +
         '</td><td>' + player.JerseyNumber + '</td><td>' + player.TeamName + '</td><td>' +
@@ -60,20 +77,3 @@ $(document).ready(function () {
             });
     });
 });
-
-$(document).ready(function () {
-    $('.btnShowDeletePlayerModal').click(function () {
-        $('#deletePlayerModal').modal('show');
-    });
-});
-
-//$('#btnDeletePlayer').click(function () {
-
-//    $.ajax({
-//        url: playeruri + "/Delete/",
-//        type: "DELETE",
-//        success: function() {
-//            $('#deletePlayerModal').modal('hide');
-//        }
-//    });
-//});
