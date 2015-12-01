@@ -17,6 +17,11 @@ namespace BaseballLeague.MVC.Controllers
             var playerList = new List<Player>();
             playerList.AddRange(ops.GetNonFreeAgentPlayers());
             playerList.AddRange(ops.GetFreeAgents());
+            var result = playerList.OrderBy(player => player.TeamName).ThenBy(player => player.JerseyNumber).ToList();
+            foreach (var player in result.Where(player => player.TeamID == 0))
+            {
+                player.TeamID = 1;
+            }
 
             return playerList;
         }
@@ -41,6 +46,17 @@ namespace BaseballLeague.MVC.Controllers
             return response;
         }
 
+        public HttpResponseMessage Delete(int id)
+        {
+            var ops = new BaseballBLL();
+            ops.DeletePlayer(id);
 
+            var response = Request.CreateResponse(HttpStatusCode.OK, id);
+
+            string uri = Url.Link("DefaultApi", new {id});
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
     }
 }

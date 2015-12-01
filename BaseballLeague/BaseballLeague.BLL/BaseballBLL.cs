@@ -17,7 +17,6 @@ namespace BaseballLeague.BLL
         public void AddPlayer(Player player)
         {
             var create = new Create();
-
             create.AddPlayer(player);
         }
 

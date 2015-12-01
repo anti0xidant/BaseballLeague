@@ -39,7 +39,7 @@
     </tr>
     </thead>
     <tbody class="searchable" id="inputPlayers">
-    @{ int playerCount = 1; }
+    @*@{ int playerCount = 1; }
     @foreach (var player in Model.Players)
     {
         <tr value="@player.PlayerID" class="@player.TeamID">
@@ -55,13 +55,12 @@
 
             @{ playerCount++; }
         </tr>
-    }
+    }*@
     </tbody>
 </table>
 
 @section Scripts
 {
-    <script src="~/Scripts/app/addPlayer.js"></script>
+    <script src="~/Scripts/app/viewManagePlayer.js"></script>
     <script src="~/Scripts/app/filterPlayersByTeamDropdown.js"></script>
-    <script src="~/Scripts/app/deletePlayer.js"></script>
 }
