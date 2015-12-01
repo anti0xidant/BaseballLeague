@@ -147,8 +147,8 @@ function createTableDataPlayer(player, count) {
     if (player.SecondaryPosition) {
         secondPosition = player.SecondaryPosition;
     }
-    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + secondPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=\"' + player.PlayerID + '\">Trade</button></td>' +
-        '<td><button class=\"btn btn-primary btn-xs btnReleasePlayer\" value=\"' + player.PlayerID + '\">Release</button></td></tr>';
+    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + secondPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-info btn-xs btnTradePlayer\" value=\"' + player.PlayerID + '\">Trade</button></td>' +
+        '<td><button class=\"btn btn-danger btn-xs btnReleasePlayer\" value=\"' + player.PlayerID + '\">Release</button></td></tr>';
 }
 
 // Creates HTML table row of Free Agent data which is used to populate Free Agent Table when modal is launched
