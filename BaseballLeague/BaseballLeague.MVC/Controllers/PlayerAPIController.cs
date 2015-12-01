@@ -16,14 +16,14 @@ namespace BaseballLeague.MVC.Controllers
             var ops = new BaseballBLL();
             var playerList = new List<Player>();
             playerList.AddRange(ops.GetAllPlayers());
-            playerList.AddRange(ops.GetFreeAgents());
+            //playerList.AddRange(ops.GetFreeAgents());
             var result = playerList.OrderBy(player => player.TeamName).ThenBy(player => player.JerseyNumber).ToList();
-            foreach (var player in result.Where(player => player.TeamID == 0))
-            {
-                player.TeamID = 1;
-            }
+            //foreach (var player in result.Where(player => player.TeamID == 0))
+            //{
+            //    player.TeamID = 1;
+            //}
 
-            return playerList;
+            return result;
         }
 
         public List<Player> Get(int teamId)
