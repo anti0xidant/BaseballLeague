@@ -93,7 +93,7 @@
        a new button is created  */
     $('#table').on('click', '.btnTradePlayer', function () {
         $('#tradePlayerID').val($(this).val());
-        $('#myModalLabel').html('Trade Player - ' + $('td:nth-child(2)').html());
+        $('#myModalLabel').html('Trade Player - ' + $(this).closest("tr").children("td").eq(1).html());
         $('#tradePlayerModal').modal('show');
         
     });
@@ -102,7 +102,7 @@
        PlayerID as a hidden input in the Release Player Modal. This click event is added whenever
        a new button is created */
     $('#table').on('click', '.btnReleasePlayer', function () {
-        $('#playerNameRelease').html("Are you sure you want to release " + $('td:nth-child(2)').html() + " (" + $('td:nth-child(5)').html().toLowerCase() + ")?");
+        $('#playerNameRelease').html("Are you sure you want to release " + $(this).closest("tr").children("td").eq(1).html() + " (" + $(this).closest("tr").children("td").eq(4).html().toLowerCase() + ")?");
         $('#releasePlayerID').val($(this).val());
         $('#releasePlayerModal').modal('show');
     });

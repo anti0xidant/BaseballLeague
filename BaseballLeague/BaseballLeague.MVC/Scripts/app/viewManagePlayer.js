@@ -15,7 +15,7 @@ function loadPlayers() {
             $(document).ready(function () {
                 $('.btnShowDeletePlayerModal').on("click", function () {
                     $('#DeletePlayerID').val($(this).val());
-                    $('#DeletePlayerMessage').html("Are you sure you want to delete " + $('td:nth-child(2)').html() + "?");
+                    $('#DeletePlayerMessage').html("Are you sure you want to delete " + $(this).closest("tr").children("td").eq(1).html() + "?");
                     $('#deletePlayerModal').modal('show');
                     $('#btnDeletePlayer').click(function () {
                         var playerID = $('#DeletePlayerID').val();
