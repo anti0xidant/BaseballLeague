@@ -1,8 +1,8 @@
 --************** Uncomment this section to drop the table*************
---USE master
---go
---DROP DATABASE BaseballLeagueCollection
---go
+USE master
+go
+DROP DATABASE BaseballLeagueCollection
+go
 --*********************************************************************
 
 

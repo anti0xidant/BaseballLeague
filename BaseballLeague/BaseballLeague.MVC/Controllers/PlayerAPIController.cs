@@ -15,7 +15,7 @@ namespace BaseballLeague.MVC.Controllers
         {
             var ops = new BaseballBLL();
             var playerList = new List<Player>();
-            playerList.AddRange(ops.GetNonFreeAgentPlayers());
+            playerList.AddRange(ops.GetAllPlayers());
             playerList.AddRange(ops.GetFreeAgents());
             var result = playerList.OrderBy(player => player.TeamName).ThenBy(player => player.JerseyNumber).ToList();
             foreach (var player in result.Where(player => player.TeamID == 0))

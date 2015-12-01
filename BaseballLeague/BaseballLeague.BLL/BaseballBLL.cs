@@ -39,11 +39,11 @@ namespace BaseballLeague.BLL
         }
 
         // Retrieves a list of all players that belong to a team
-        public List<Player> GetNonFreeAgentPlayers()
+        public List<Player> GetAllPlayers()
         {
             var read = new Read();
 
-            return read.GetNonFreeAgentPlayers();
+            return read.GetAllPlayers();
         }
 
         // Retrieves a list of all players of a specific team

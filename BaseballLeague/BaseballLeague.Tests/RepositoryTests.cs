@@ -82,15 +82,11 @@ namespace BaseballLeague.Tests
         }
 
         [Test]
-        public void TestNonFreeAgentList()
+        public void TestGetAllPlayers()
         {
             var repo = new Read();
-            var players = repo.GetNonFreeAgentPlayers();
-
-            //Check for free agents
-            var freeAgents= players.Where(p => p.TeamID == 0).ToList();
-            
-            Assert.AreEqual(0,freeAgents.Count);
+            var playersCount = repo.GetAllPlayers().Count;           
+            Assert.AreNotEqual(0, playersCount);
         }
 
         [Test]
@@ -100,7 +96,7 @@ namespace BaseballLeague.Tests
             var players = repo.GetFreeAgents();
             
             //Check for players assigned to teams
-            var nonFreeAgents = players.Where(p => p.TeamID != 0).ToList();
+            var nonFreeAgents = players.Where(p => p.TeamID != 1).ToList();
 
             Assert.AreEqual(0, nonFreeAgents.Count);
         }

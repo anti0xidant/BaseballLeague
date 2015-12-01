@@ -45,7 +45,7 @@ namespace BaseballLeague.Data
         }
 
         // Retrieves a list of all players that belong to a team
-        public List<Player> GetNonFreeAgentPlayers()
+        public List<Player> GetAllPlayers()
         {
             using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
             {
