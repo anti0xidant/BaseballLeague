@@ -46,7 +46,9 @@ namespace BaseballLeague.MVC.Controllers
             return response;
         }
 
-        public HttpResponseMessage Delete(int id)
+        [HttpDelete]
+        [ActionName("DeletePlayer")]
+        public HttpResponseMessage DeletePlayer(int id)
         {
             var ops = new BaseballBLL();
             ops.DeletePlayer(id);

@@ -102,7 +102,7 @@
        PlayerID as a hidden input in the Release Player Modal. This click event is added whenever
        a new button is created */
     $('#table').on('click', '.btnReleasePlayer', function () {
-        $('#playerNameRelease').html($('td:nth-child(2)').html() + '-' + $('td:nth-child(5)').html());
+        $('#playerNameRelease').html("Are you sure you want to release " + $('td:nth-child(2)').html() + " (" + $('td:nth-child(5)').html().toLowerCase() + ")?");
         $('#releasePlayerID').val($(this).val());
         $('#releasePlayerModal').modal('show');
     });
@@ -147,13 +147,13 @@ function createTableDataPlayer(player, count) {
     if (player.SecondaryPosition) {
         secondPosition = player.SecondaryPosition;
     }
-    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + secondPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-info btn-xs btnTradePlayer\" value=\"' + player.PlayerID + '\">Trade</button></td>' +
+    return '<tr><td>' + (count + 1) + '</td><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + secondPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnTradePlayer\" value=\"' + player.PlayerID + '\">Trade</button></td>' +
         '<td><button class=\"btn btn-danger btn-xs btnReleasePlayer\" value=\"' + player.PlayerID + '\">Release</button></td></tr>';
 }
 
 // Creates HTML table row of Free Agent data which is used to populate Free Agent Table when modal is launched
 function createTableDataFreeAgents(player) {
-    return '<tr><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-primary btn-xs btnSignFreeAgent\" value=' + player.PlayerID + '>Sign</button></td></tr>';
+    return '<tr><td>' + player.Name + '</td><td>' + player.JerseyNumber + '</td><td>' + player.LastYearBA + '</td><td>' + player.PrimaryPosition + '</td><td>' + player.SecondaryPosition + '</td><td>' + player.YearsPlayed + '</td><td><button class=\"btn btn-success btn-xs btnSignFreeAgent\" value=' + player.PlayerID + '>Sign</button></td></tr>';
 }
 
 // Create HTML option element for Team drop down which will be used in Trade Player Modal

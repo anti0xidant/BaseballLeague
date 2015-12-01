@@ -8,6 +8,8 @@
 
     // Adds click event to trigger Modal when Add Team button is pressed
     $('#btnShowAddTeam').click(function () {
+        $('.addTeamForm').val("");
+        $('#addLeagueID').val(1);
         $('#addTeamModal').modal('show');
     });
     

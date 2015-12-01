@@ -1,6 +1,6 @@
 @model BaseballLeague.MVC.Models.AddPlayerModalVM
 
-<button class="btn btn-primary" id="btnShowAddPlayer">Add Player</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="addPlayerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -18,19 +18,19 @@
                         <h2>Add Player</h2>
                         <div class="form-group">
                             <label>First Name</label>
-                            <input type="text" id="addPlayerFirstName" class="form-control" />
+                            <input type="text" id="addPlayerFirstName" class="form-control addPlayerForm" />
                         </div>
                         <div class="form-group">
                             <label>Last Name</label>
-                            <input type="text" id="addPlayerLastName" class="form-control"/>
+                            <input type="text" id="addPlayerLastName" class="form-control addPlayerForm"/>
                         </div>
                         <div class="form-group">
                             <label>Jersey Number</label>
-                            <input type="text" id="addPlayerJerseyNumber" class="form-control"/>
+                            <input type="text" id="addPlayerJerseyNumber" class="form-control addPlayerForm"/>
                         </div>
                         <div class="form-group">
                             <label>Team</label>
-                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerTeamID">
+                            <select class="form-control col-lg-4 addPlayerDropDown" title="Select a Team" id="addPlayerTeamID">
                                 @foreach (var tdd in Model.Teams)
                                 {
                                     <option value=@tdd.Value>@tdd.Text</option>
@@ -39,15 +39,15 @@
                         </div>
                         <div class="form-group">
                             <label>Previous Year's Batting Average</label>
-                            <input type="number" min="0" max="1" step="any" id="addPlayerLastYearBA" class="form-control"/>
+                            <input type="number" min="0" max="1" step="any" id="addPlayerLastYearBA" class="form-control addPlayerForm"/>
                         </div>
                         <div class="form-group">
                             <label>Years Played</label>
-                            <input type="number" min="0" step="1" id="addPlayerYearsPlayed" class="form-control"/>
+                            <input type="number" min="0" step="1" id="addPlayerYearsPlayed" class="form-control addPlayerForm"/>
                         </div>
                         <div class="form-group">
                             <label>Primary Position</label>
-                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerPrimaryPositionID">
+                            <select class="form-control col-lg-4 addPlayerDropDown" title="Select a Team" id="addPlayerPrimaryPositionID">
                                 @foreach (var ppdd in Model.PrimaryPositions)
                                 {
                                     <option value=@ppdd.Value>@ppdd.Text</option>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label>Secondary Position</label>
-                            <select class="form-control col-lg-4" title="Select a Team" id="addPlayerSecondaryPositionID">
+                            <select class="form-control col-lg-4 addPlayerDropDown" title="Select a Team" id="addPlayerSecondaryPositionID">
                                 <option value="null">None</option>
                                 @foreach (var spdd in Model.SecondaryPositions)
                                 {
@@ -69,7 +69,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" id="btnSavePlayer">Save</button>
+                <button class="btn btn-success" id="btnSavePlayer">Save</button>
             </div>
         </div>
     </div>
